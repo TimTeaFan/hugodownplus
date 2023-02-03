@@ -23,139 +23,93 @@
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 #' @param includes Named list of additional content to include within the document (typically created using the includes function).
 #' @param pandoc_args Additional command line options to pass to pandoc
-md_document <- function(toc = FALSE,
-                        toc_depth = 3,
-                        fig_width = 7,
-                        fig_asp = 0.618,
-                        fig_retina = 2,
-                        tidyverse_style = TRUE,
-                        standalone = FALSE,
-                        includes = NULL,
-                        pandoc_args = NULL
-) {
-
-  knitr <- rmarkdown::knitr_options_html(
-    fig_height = NULL,
-    fig_width = fig_width,
-    fig_retina = fig_retina,
-    keep_md = FALSE
-  )
+md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,
+          fig_retina = 2, tidyverse_style = TRUE, standalone = FALSE,
+          includes = NULL, pandoc_args = NULL) {
+  knitr <- rmarkdown::knitr_options_html(fig_height = NULL,
+                                         fig_width = fig_width, fig_retina = fig_retina, keep_md = FALSE)
   knitr$opts_chunk$fig.asp <- fig_asp
   knitr$opts_chunk$fig.path <- "figs/"
-  # Ensure knitr doesn't turn HTML widgets into pngs
   knitr$opts_chunk$screenshot.force <- FALSE
-
   knitr$knit_hooks <- knit_hooks()
-
   if (tidyverse_style) {
     knitr$opts_chunk$collapse <- TRUE
     knitr$opts_chunk$comment <- "#>"
     knitr$opts_chunk$fig.align <- "center"
     knitr$opts_chunk$out.width <- "700px"
   }
-
   if (toc)
     standalone <- TRUE
   args <- c(if (standalone) "--standalone")
-  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth), pandoc_args)
+  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth),
+            pandoc_args)
   args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   args <- c(args, "--wrap=none")
-
-  pandoc <- rmarkdown::pandoc_options(
-    to = goldmark_format(),
-    from = paste0(rmarkdown::rmarkdown_format(), "+emoji"),
-    args = args,
-    ext = ".md"
-  )
-
+  pandoc <- rmarkdown::pandoc_options(to = goldmark_format(),
+                                      from = paste0(rmarkdown::rmarkdown_format(), "+emoji"),
+                                      args = args, ext = ".md")
   input_rmd <- NULL
   old_options <- NULL
   old_env <- NULL
-
   pre_knit <- function(input, ...) {
     input_rmd <<- input
-    old_options <<- options(
-      cli.unicode = TRUE,
-      cli.num_colors = 8L,
-      cli.dynamic = FALSE,
-      crayon.enabled = TRUE
-    )
+    old_options <<- options(cli.unicode = TRUE, cli.num_colors = 8L,
+                            cli.dynamic = FALSE, crayon.enabled = TRUE)
     old_env <- set_envvar(c(RSTUDIO = 0))
   }
   on_exit <- function(...) {
     options(old_options)
     set_envvar(old_env)
   }
-
   hack_always_allow_html <- function(...) {
-    # This truly awful hack ensures that rmarkdown doesn't tell us we're
-    # producing HTML widgets
     render_env <- env_parent(parent.frame())
     render_env$front_matter$always_allow_html <- TRUE
     NULL
   }
-
   knit_meta <- NULL
   output_dir <- NULL
-  preprocess <- function(metadata, input_file, runtime, knit_meta, files_dir, output_dir) {
+  preprocess <- function(metadata, input_file, runtime, knit_meta,
+                         files_dir, output_dir) {
     knit_meta <<- knit_meta
     output_dir <<- output_dir
     NULL
   }
-
-  postprocess <- function(metadata, input_file, output_file, clean, verbose) {
+  postprocess <- function(metadata, input_file, output_file,
+                          clean, verbose) {
     old_yaml <- extract_yaml(brio::read_lines(input_file))
-
     new_yaml <- list(rmd_hash = rmd_hash(input_rmd))
     if (length(knit_meta) > 0) {
       if (!is_installed("htmltools")) {
         abort("htmltools package required for posts that include HTML widgets")
       }
-
-      # Capture dependencies, remove duplicates, save to directory, and render
       deps <- htmltools::resolveDependencies(knit_meta)
-      local <- lapply(deps, htmltools::copyDependencyToDir, outputDir = output_dir)
-      local <- lapply(local, htmltools::makeDependencyRelative, output_dir)
-      deps <- strsplit(htmltools::renderDependencies(local), "\n")[[1]]
+      local <- lapply(deps, htmltools::copyDependencyToDir,
+                      outputDir = output_dir)
+      local <- lapply(local, htmltools::makeDependencyRelative,
+                      output_dir)
+      deps <- strsplit(htmltools::renderDependencies(local),
+                       "\n")[[1]]
       new_yaml$html_dependencies <- deps
     }
-
     body <- brio::read_file(output_file)
-
-    output_lines <- c(
-      "---", old_yaml, yaml::as.yaml(new_yaml), "---",
-      "",
-      link_inline(body)
-    )
+    output_lines <- c("---", old_yaml, yaml::as.yaml(new_yaml),
+                      "---", "", link_inline(body))
     brio::write_lines(output_lines, output_file)
-
-    # If server not running, and RStudio is rendering the doc, generate
-    # a standalone HTML file for preview
     if (!port_active(1313) && !is.na(preview_dir())) {
       output_html <- "preview.html"
-      rmarkdown::pandoc_convert(
-        input = output_file,
-        output = output_html,
-        to = "html",
-        options = preview_pandoc_args()
-      )
+      rmarkdown::pandoc_convert(input = output_file, output = output_html,
+                                to = "html", options = preview_pandoc_args())
       output_file <- file_move(output_html, preview_path())
-    } else {
+    }
+    else {
       output_file <- tempdir()
     }
-
     output_file
   }
-
-  rmarkdown::output_format(
-    knitr = knitr,
-    pandoc = pandoc,
-    pre_processor = preprocess,
-    post_processor = postprocess,
-    pre_knit = pre_knit,
-    post_knit = hack_always_allow_html,
-    on_exit = on_exit
-  )
+  rmarkdown::output_format(knitr = knitr, pandoc = pandoc,
+                           pre_processor = preprocess, post_processor = postprocess,
+                           pre_knit = pre_knit, post_knit = hack_always_allow_html,
+                           on_exit = on_exit)
 }
 
 goldmark_format <- function() {
