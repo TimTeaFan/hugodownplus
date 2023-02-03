@@ -35,3 +35,8 @@ port_active <- function(port) {
     TRUE
   }, error = function(e) FALSE)
 }
+
+# hugodown site function
+rmd_hash <- function(path) {
+  digest::digest(path, file = TRUE, algo = "xxhash64")
+}
