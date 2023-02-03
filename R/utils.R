@@ -26,3 +26,12 @@ set_envvar <- function(envs, action = "replace") {
 
   invisible(old)
 }
+
+# hugodown server function
+port_active <- function(port) {
+  tryCatch({
+    suppressWarnings(con <- socketConnection("127.0.0.1", port, timeout = 1))
+    close(con)
+    TRUE
+  }, error = function(e) FALSE)
+}

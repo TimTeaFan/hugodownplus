@@ -21,15 +21,17 @@
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
-#'   `collapse = TRUE`, `comment = "#>`, `fig.align = "center"`, and
-#'   `out.width = "700px"`.
+#' @param includes Named list of additional content to include within the document (typically created using the includes function).
+#' @param pandoc_args Additional command line options to pass to pandoc
 md_document <- function(toc = FALSE,
                         toc_depth = 3,
                         fig_width = 7,
                         fig_asp = 0.618,
                         fig_retina = 2,
                         tidyverse_style = TRUE,
-                        standalone = FALSE
+                        standalone = FALSE,
+                        includes = NULL,
+                        pandoc_args = NULL
 ) {
 
   knitr <- rmarkdown::knitr_options_html(
@@ -52,11 +54,11 @@ md_document <- function(toc = FALSE,
     knitr$opts_chunk$out.width <- "700px"
   }
 
-  # added toc from here ...
   if (toc)
     standalone <- TRUE
   args <- c(if (standalone) "--standalone")
-  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth))
+  args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth), pandoc_args)
+  args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   args <- c(args, "--wrap=none")
 
   pandoc <- rmarkdown::pandoc_options(
@@ -65,7 +67,6 @@ md_document <- function(toc = FALSE,
     args = args,
     ext = ".md"
   )
-  # ... to here
 
   input_rmd <- NULL
   old_options <- NULL
@@ -364,8 +365,3 @@ str_replace <- function(x, pattern, fun, ...) {
   regmatches(x, loc) <- out
   x
 }
-
-#' Deprecated: please use `md_document()`
-#' @export
-#' @keywords internal
-hugo_document <- md_document
