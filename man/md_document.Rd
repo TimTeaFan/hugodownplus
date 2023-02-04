@@ -43,10 +43,16 @@ width of the image explicitly.}
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \description{
-This RMarkdown output format is designed to generate markdown that is
+This RMarkdown output format is a dropin replacement for \code{\link[hugodown:md_document]{hugodown::md_document()}}.
+Like the later, it is designed to generate markdown that is
 maximally compatible with Hugo. It intelligently generates a preview so
 that you see something useful when Hugo isn't running, but it doesn't
 get in the way of hugo's full-site preview when it is.
+}
+\details{
+On top of the functionality of \code{\link[hugodown:md_document]{hugodown::md_document()}} four new arguments are available.
+\code{use_boxes} allows the use of expendable html boxes. \code{standalone}, \code{includes} and \code{pandoc_args}
+are adapted from \code{\link[rmarkdown:md_document]{rmarkdown::md_document()}} and allow additional content and command line options.
 }
 \section{Syntax highlighting}{
 

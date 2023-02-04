@@ -4,9 +4,9 @@
 \name{hugodownplus-package}
 \alias{hugodownplus}
 \alias{hugodownplus-package}
-\title{hugodownplus: Extend 'hugodown's markdown document with toc and pandoc arguments.}
+\title{hugodownplus: Extend 'hugodown's markdown document with toc and html boxes.}
 \description{
-hugodownplus extends 'hugodown' md_document with toc and pandoc arguments.
+hugodownplus extends 'hugodown's md_document with toc and html boxes. It allows the use of the arguments 'includes' and 'pandoc_args' which are available in rmarkdown::md_document.
 }
 \seealso{
 Useful links:

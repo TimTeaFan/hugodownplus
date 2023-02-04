@@ -1,9 +1,14 @@
 #' An Rmd output format that produces Hugo-flavoured markdown
 #'
-#' This RMarkdown output format is designed to generate markdown that is
+#' This RMarkdown output format is a dropin replacement for [hugodown::md_document()].
+#' Like the later, it is designed to generate markdown that is
 #' maximally compatible with Hugo. It intelligently generates a preview so
 #' that you see something useful when Hugo isn't running, but it doesn't
 #' get in the way of hugo's full-site preview when it is.
+#'
+#' On top of the functionality of [hugodown::md_document()] four new arguments are available.
+#' `use_boxes` allows the use of expendable html boxes. `standalone`, `includes` and `pandoc_args`
+#' are adapted from [rmarkdown::md_document()] and allow additional content and command line options.
 #'
 #' @section Syntax highlighting:
 #'
@@ -28,15 +33,14 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
                          use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
                          standalone = FALSE, includes = NULL, pandoc_args = NULL) {
 
-  print(includes)
-
   if (use_boxes) {
     if (!is.null(includes)) {
-      stop(paste0("Problem in `hugodownplus::md_docment`.\n",
-                  "When `use_box = TRUE` no additional arguments must be supplied to `includes`")
+      stop(paste0("Problem in `hugodownplus::md_docment`:\n",
+                  "When setting `use_boxs = TRUE` no additional arguments must be supplied to `includes`")
       )
     }
-    includes <- list(after_body = fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus"))
+    includes <- list(after_body = fs::path_package("exthtml/wrap_info_box.html",
+                                                   package = "hugodownplus"))
   }
 
   knitr <- rmarkdown::knitr_options_html(fig_height = NULL,
