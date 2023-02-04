@@ -1,13 +1,13 @@
 Package: hugodownplus
 Title: Extend 'hugodown's markdown document with toc and pandoc arguments.
-Version: 0.0.1.9000
+Version: 0.0.0.9000
 Authors@R: 
     person(given = "Tim",
            family = "Tiefenbach",
            role = c("aut", "cre"),
            email = "mailme@tim-tiefenbach.de",
            comment = c(ORCID = "0000-0001-9443-2434"))
-Description: hugodownplus extends 'hugodown' md_document with toc and pandoc arguments.
+Description: hugodownplus extends 'hugodown's md_document with toc and pandoc arguments.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
