@@ -19,53 +19,77 @@
 #' @param toc_depth	Depth of headers to include in table of contents
 #' @param fig_width Figure width (in inches).
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
+#' @param use_boxes TRUE to allow the use of info, warn and session boxes. If TRUE `includes` must not contain additional parameters.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 #' @param includes Named list of additional content to include within the document (typically created using the includes function).
 #' @param pandoc_args Additional command line options to pass to pandoc
 md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,
-          fig_retina = 2, tidyverse_style = TRUE, standalone = FALSE,
-          includes = NULL, pandoc_args = NULL) {
+                         use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
+                         standalone = FALSE, includes = NULL, pandoc_args = NULL) {
+
+  cat(includes)
+
+  if (use_boxes) {
+    if (!is.null(includes)) {
+      stop(paste0("Problem in `hugodownplus::md_docment`.\n",
+                  "When `use_box = TRUE` no additional arguments must be supplied to `includes`")
+      )
+    }
+    includes <- list(after_body = fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus"))
+  }
+
   knitr <- rmarkdown::knitr_options_html(fig_height = NULL,
-                                         fig_width = fig_width, fig_retina = fig_retina, keep_md = FALSE)
+                                         fig_width = fig_width,
+                                         fig_retina = fig_retina,
+                                         keep_md = FALSE)
+
   knitr$opts_chunk$fig.asp <- fig_asp
   knitr$opts_chunk$fig.path <- "figs/"
   knitr$opts_chunk$screenshot.force <- FALSE
   knitr$knit_hooks <- knit_hooks()
+
   if (tidyverse_style) {
     knitr$opts_chunk$collapse <- TRUE
     knitr$opts_chunk$comment <- "#>"
     knitr$opts_chunk$fig.align <- "center"
     knitr$opts_chunk$out.width <- "700px"
   }
+
   if (toc)
     standalone <- TRUE
+
   args <- c(if (standalone) "--standalone")
   args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth),
             pandoc_args)
   args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   args <- c(args, "--wrap=none")
+
   pandoc <- rmarkdown::pandoc_options(to = goldmark_format(),
                                       from = paste0(rmarkdown::rmarkdown_format(), "+emoji"),
                                       args = args, ext = ".md")
   input_rmd <- NULL
   old_options <- NULL
   old_env <- NULL
+
   pre_knit <- function(input, ...) {
     input_rmd <<- input
     old_options <<- options(cli.unicode = TRUE, cli.num_colors = 8L,
                             cli.dynamic = FALSE, crayon.enabled = TRUE)
     old_env <- set_envvar(c(RSTUDIO = 0))
   }
+
   on_exit <- function(...) {
     options(old_options)
     set_envvar(old_env)
   }
+
   hack_always_allow_html <- function(...) {
     render_env <- env_parent(parent.frame())
     render_env$front_matter$always_allow_html <- TRUE
     NULL
   }
+
   knit_meta <- NULL
   output_dir <- NULL
   preprocess <- function(metadata, input_file, runtime, knit_meta,
@@ -74,8 +98,10 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
     output_dir <<- output_dir
     NULL
   }
+
   postprocess <- function(metadata, input_file, output_file,
                           clean, verbose) {
+
     old_yaml <- extract_yaml(brio::read_lines(input_file))
     new_yaml <- list(rmd_hash = rmd_hash(input_rmd))
     if (length(knit_meta) > 0) {
@@ -91,21 +117,23 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
                        "\n")[[1]]
       new_yaml$html_dependencies <- deps
     }
+
     body <- brio::read_file(output_file)
     output_lines <- c("---", old_yaml, yaml::as.yaml(new_yaml),
                       "---", "", link_inline(body))
     brio::write_lines(output_lines, output_file)
+
     if (!port_active(1313) && !is.na(preview_dir())) {
       output_html <- "preview.html"
       rmarkdown::pandoc_convert(input = output_file, output = output_html,
                                 to = "html", options = preview_pandoc_args())
       output_file <- file_move(output_html, preview_path())
-    }
-    else {
+    } else {
       output_file <- tempdir()
     }
     output_file
   }
+
   rmarkdown::output_format(knitr = knitr, pandoc = pandoc,
                            pre_processor = preprocess, post_processor = postprocess,
                            pre_knit = pre_knit, post_knit = hack_always_allow_html,

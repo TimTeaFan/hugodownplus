@@ -9,6 +9,7 @@ md_document(
   toc_depth = 3,
   fig_width = 7,
   fig_asp = 0.618,
+  use_boxes = FALSE,
   fig_retina = 2,
   tidyverse_style = TRUE,
   standalone = FALSE,
@@ -24,6 +25,8 @@ md_document(
 \item{fig_width}{Figure width (in inches).}
 
 \item{fig_asp}{Figure aspect ratio, defaults to the golden ratio.}
+
+\item{use_boxes}{TRUE to allow the use of info, warn and session boxes. If TRUE \code{includes} must not contain additional parameters.}
 
 \item{fig_retina}{Scaling to perform for retina displays. Defaults to
 \code{NULL} which performs no scaling. A setting of 2 will work for all
