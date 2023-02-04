@@ -28,7 +28,7 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
                          use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
                          standalone = FALSE, includes = NULL, pandoc_args = NULL) {
 
-  cat(includes)
+  print(includes)
 
   if (use_boxes) {
     if (!is.null(includes)) {
