@@ -4,7 +4,7 @@
 #'
 #' @export
 child_session_info <- function() {
-  knitr::knit_child(fs::path_package("rmdtmp/info_box.Rmd",
+  knitr::knit_child(fs::path_package("rmdtmp/session_info.Rmd",
                                      package = "hugodownplus"),
                     envir = environment(),
                     quiet = TRUE)
