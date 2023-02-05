@@ -1,12 +1,16 @@
 Package: hugodownplus
 Title: Extend 'hugodown's markdown document with toc and html boxes.
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(given = "Tim",
            family = "Tiefenbach",
            role = c("aut", "cre"),
            email = "mailme@tim-tiefenbach.de",
-           comment = c(ORCID = "0000-0001-9443-2434"))
+           comment = c(ORCID = "0000-0001-9443-2434")),
+    person(given = "Shafayet Khan",
+           family = "Shafee",
+           role = c("ctb"),
+           email = "sshafee@isrt.ac.bd"))
 Description: hugodownplus extends 'hugodown's md_document with toc and html boxes.
     It allows the use of the arguments 'includes' and 'pandoc_args' which are available in rmarkdown::md_document.
 License: MIT + file LICENSE
