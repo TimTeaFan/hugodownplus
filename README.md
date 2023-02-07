@@ -78,6 +78,8 @@ To render this part into a special info or warn box we can wrap it using
 a fenced (pandoc) div using three colons `:::`:
 
     ::: {.info-box title="Title of my info box"}
+    ```{r, child="path_to_child_document.Rmd"}
+    ```
     :::
 
 All we have to do is to specify either `{.info-box}` or `{.warn-box}`
@@ -99,7 +101,8 @@ Below is a full example:
     Some text
 
     ::: {.info-box title="Title of my info box"}
-
+    ```{r, child="path_to_child_document.Rmd"}
+    ```
     :::
 
 This alone will just render an expandable box using the `<details>` and
@@ -143,7 +146,6 @@ common class which is why the CSS selectors take `.note` as class.
 Similarly, the CSS selectors for the warn box look like this:
 
 ``` css
-
 .warn {
   /* customize the whole box */
 }
@@ -159,7 +161,6 @@ summary.warn-header,
 ```
 
 <style type="text/css">
-
 .warn {
   /* customize the whole box */
 }

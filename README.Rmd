@@ -69,6 +69,7 @@ To render this part into a special info or warn box we can wrap it using a fence
 
 ```{R, echo = FALSE}
 cat('::: {.info-box title="Title of my info box"}
+```{r, child="path_to_child_document.Rmd"}\n```
 :::')
 ```
 
@@ -91,7 +92,7 @@ title: "Article title"
 Some text
 
 ::: {.info-box title="Title of my info box"}
-
+```{r, child="path_to_child_document.Rmd"}\n```
 :::')
 ```
 
@@ -117,7 +118,6 @@ Note that the class inside the fenced (pandoc) div `:::` is called `.info-box`, 
 Similarly, the CSS selectors for the warn box look like this:
 
 ```{css}
-
 .warn {
   /* customize the whole box */
 }
