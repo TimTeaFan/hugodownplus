@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+/* add margin to h2 */
+
+h2 {
+  margin-top: 20px;
+}
+
+ /* don't underline inline code*/
+ p > code > a {
+   text-decoration: none !important;
+ }
+
+/* don't display search form */
+form.form-inline {
+  display: none;
+}
+
+/* small box around version number*/
+small.nav-text {
+  color: #fff! important;
+  background-color: #d98205;
+  padding-left: 5px;
+  padding-right:5px;
+  border-radius: 3px;
+}
+
+/* don't underline functions, library calls, operators in code */
+span.fu > a, span.va > a, span.op > a, span.kw > a  {
+  text-decoration: none !important;
+}
+
+/* don't underline library calls and color them blue */
+span.kw > a {
+  color: rgb(10, 15, 233) !important;
+}
+
+/* don't show small logo on every page */
+img.logo {
+  display: none;
+}
+
+body {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
+  /*  "Lato", sans-serif */
+  font-size: 16px !important;
+  line-height: 1.846 !important;
+  font-weight: 400 !important;
+  color: #444444 !important;
+  -webkit-font-smoothing: antialiased !important;
+  letter-spacing: .1px !important;
+}
