@@ -43,7 +43,7 @@ width of the image explicitly.}
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \description{
-This RMarkdown output format is a dropin replacement for \code{\link[hugodown:md_document]{hugodown::md_document()}}.
+This RMarkdown output format is a drop-in replacement for \code{\link[hugodown:md_document]{hugodown::md_document()}}.
 Like the later, it is designed to generate markdown that is
 maximally compatible with Hugo. It intelligently generates a preview so
 that you see something useful when Hugo isn't running, but it doesn't
@@ -61,5 +61,11 @@ are adapted from \code{\link[rmarkdown:md_document]{rmarkdown::md_document()}} a
 For R code it uses \href{http://github.com/r-lib/downlit}{downlit}. For
 other languages, it relies on Chroma, the syntax highlighter built into
 hugo.
+}
+
+\section{Reference}{
+
+For examples of how to include expandable boxes when the \code{use_boxes} argument is set to \code{TRUE}
+refer to the documentation in the \href{README.me}{README} file.
 }
 

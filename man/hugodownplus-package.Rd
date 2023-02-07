@@ -6,7 +6,9 @@
 \alias{hugodownplus-package}
 \title{hugodownplus: Extend 'hugodown's markdown document with toc and html boxes.}
 \description{
-hugodownplus extends 'hugodown's md_document with toc and html boxes. It allows the use of the arguments 'includes' and 'pandoc_args' which are available in rmarkdown::md_document.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+hugodownplus extends 'hugodown's md_document with toc and HTML boxes. It allows the use of the arguments 'includes' and 'pandoc_args' which are available in rmarkdown::md_document.
 }
 \seealso{
 Useful links:
@@ -18,6 +20,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Tim Tiefenbach \email{mailme@tim-tiefenbach.de} (\href{https://orcid.org/0000-0001-9443-2434}{ORCID})
+
+Authors:
+\itemize{
+  \item Shafayet Khan Shafee \email{sshafee@isrt.ac.bd}
+}
 
 }
 \keyword{internal}

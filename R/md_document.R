@@ -1,6 +1,6 @@
 #' An Rmd output format that produces Hugo-flavoured markdown
 #'
-#' This RMarkdown output format is a dropin replacement for [hugodown::md_document()].
+#' This RMarkdown output format is a drop-in replacement for [hugodown::md_document()].
 #' Like the later, it is designed to generate markdown that is
 #' maximally compatible with Hugo. It intelligently generates a preview so
 #' that you see something useful when Hugo isn't running, but it doesn't
@@ -17,7 +17,6 @@
 #' other languages, it relies on Chroma, the syntax highlighter built into
 #' hugo.
 #'
-#' @export
 #' @inheritParams rmarkdown::md_document
 #'
 #' @param toc	TRUE to include a table of contents in the output
@@ -29,18 +28,31 @@
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 #' @param includes Named list of additional content to include within the document (typically created using the includes function).
 #' @param pandoc_args Additional command line options to pass to pandoc
+#'
+#' @section Reference:
+#' For examples of how to include expandable boxes when the `use_boxes` argument is set to `TRUE`
+#' refer to the documentation in the [README](README.me) file.
+#'
+#' @export
 md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,
                          use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
                          standalone = FALSE, includes = NULL, pandoc_args = NULL) {
 
   if (use_boxes) {
-    if (!is.null(includes)) {
+
+    if (!is.null(includes[["after_body"]])) {
       stop(paste0("Problem in `hugodownplus::md_docment`:\n",
-                  "When setting `use_boxs = TRUE` no additional arguments must be supplied to `includes`")
+                  "When setting `use_boxs = TRUE` `after_body` cannot be added to the `includes` argument.")
       )
     }
-    includes <- list(after_body = fs::path_package("exthtml/wrap_info_box.html",
-                                                   package = "hugodownplus"))
+
+    wrap_box_file_path <- fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus")
+
+    if (!is.null(includes)) {
+      includes[["after_body"]] <- wrap_box_file_path
+    } else {
+      includes <- list(after_body = wrap_box_file_path)
+    }
   }
 
   knitr <- rmarkdown::knitr_options_html(fig_height = NULL,

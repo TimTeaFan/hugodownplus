@@ -7,9 +7,19 @@
 child_session_info()
 }
 \description{
-An Rmd child template that produces a collapsed session info box
+When called in an Rmd document this function generates child document containing an expandable
+session info box.
 }
 \section{Examples}{
 
+
+Call this function on a separate line using inline code \verb{\{r, eval = FALSE, echo = TRUE\}r child_session_info()}.
+}
+
+\section{css}{
+
+In CSS Use the \code{.session} class to target the whole expandable box.
+Use \code{summary.session-header} to target the box header.
+Use \code{.session-details} to target the content of the box.
 }
 

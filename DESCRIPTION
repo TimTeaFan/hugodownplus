@@ -9,9 +9,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-9443-2434")),
     person(given = "Shafayet Khan",
            family = "Shafee",
-           role = c("ctb"),
+           role = c("aut"),
            email = "sshafee@isrt.ac.bd"))
-Description: hugodownplus extends 'hugodown's md_document with toc and html boxes.
+Description: hugodownplus extends 'hugodown's md_document with toc and HTML boxes.
     It allows the use of the arguments 'includes' and 'pandoc_args' which are available in rmarkdown::md_document.
 License: MIT + file LICENSE
 Encoding: UTF-8
