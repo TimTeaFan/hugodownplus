@@ -143,6 +143,7 @@ common class which is why the CSS selectors take `.note` as class.
 Similarly, the CSS selectors for the warn box look like this:
 
 ``` css
+
 .warn {
   /* customize the whole box */
 }
@@ -158,6 +159,7 @@ summary.warn-header,
 ```
 
 <style type="text/css">
+
 .warn {
   /* customize the whole box */
 }

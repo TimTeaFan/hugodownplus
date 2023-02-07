@@ -117,6 +117,7 @@ Note that the class inside the fenced (pandoc) div `:::` is called `.info-box`, 
 Similarly, the CSS selectors for the warn box look like this:
 
 ```{css}
+
 .warn {
   /* customize the whole box */
 }
