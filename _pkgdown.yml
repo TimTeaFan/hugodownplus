@@ -1,4 +1,22 @@
+title: hugodownplus
 url: https://timteafan.github.io/hugodownplus/
 template:
   bootstrap: 5
 
+
+navbar:
+  structure:
+    left:  [reference, news, twitter, github]
+    right: [search]
+  components:
+    reference:
+      icon: fas fa-tools
+      text: Reference
+      href: reference/index.html
+    news:
+      icon: fas fa-clipboard-list
+      text: News
+      href: news/index.html
+    twitter:
+      icon: "fab fa-twitter"
+      href: https://twitter.com/timteafan
