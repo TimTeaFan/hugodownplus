@@ -2,7 +2,9 @@ title: hugodownplus
 url: https://timteafan.github.io/hugodownplus/
 template:
   bootstrap: 5
-
+  bootswatch: lumen
+  bslib:
+    primary: "#489bfa"
 
 navbar:
   structure:
