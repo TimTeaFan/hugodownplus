@@ -98,7 +98,7 @@ Some text
 
 This alone will just render an expandable box using the `<details>` and `<summary>` HTML tags. All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the info-box:
 
-```{css}
+```{css, eval = FALSE}
 .note {
   /* customize the whole box */
 }
@@ -117,7 +117,7 @@ Note that the class inside the fenced (pandoc) div `:::` is called `.info-box`, 
 
 Similarly, the CSS selectors for the warn box look like this:
 
-```{css}
+```{css, eval = FALSE}
 .warn {
   /* customize the whole box */
 }

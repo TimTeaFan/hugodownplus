@@ -124,21 +124,6 @@ summary.note-header,
 }
 ```
 
-<style type="text/css">
-.note {
-  /* customize the whole box */
-}
-
-summary.note-header,
-.note-header {
-  /* customize the box header */
-}
-
-.note-details {
-  /* customize the content of the box */
-}
-</style>
-
 Note that the class inside the fenced (pandoc) div `:::` is called
 `.info-box`, but the CSS classes are called `.note`. The `info` is a too
 common class which is why the CSS selectors take `.note` as class.
@@ -159,21 +144,6 @@ summary.warn-header,
   /* customize the content of the box */
 }
 ```
-
-<style type="text/css">
-.warn {
-  /* customize the whole box */
-}
-
-summary.warn-header,
-.warn-header {
-  /* customize the box header */
-}
-
-.warn-details {
-  /* customize the content of the box */
-}
-</style>
 
 #### child info session
 
