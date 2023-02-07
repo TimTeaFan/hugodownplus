@@ -10,12 +10,15 @@ status](https://img.shields.io/badge/status-first%20release-yellow)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 ![CRAN status](https://img.shields.io/badge/CRAN-not%20published-red)
+
 <!-- badges: end -->
 
 ## Overview
 
 <p id="logop">
-<a id="logo" href="https://raw.githubusercontent.com/TimTeaFan/hugodownplus/main/man/figures/logo_big.png"><img src="https://raw.githubusercontent.com/TimTeaFan/hugodownplus/main/man/figures/logo.png" alt="hugodownplus' logo a notebook computer showing 'hugo down' on the screen and next to it a plus symbol containing the word 'plus'" align="right"></a>
+
+<a id="logo" href="https://raw.githubusercontent.com/TimTeaFan/hugodownplus/main/man/figures/logo_big.png"><img src="https://raw.githubusercontent.com/TimTeaFan/hugodownplus/main/man/figures/logo.png" alt="hugodownplus&apos; logo a notebook computer showing &apos;hugo down&apos; on the screen and next to it a plus symbol containing the word &apos;plus&apos;" align="right"/></a>
+
 </p>
 
 {hugodownplus} extends {hugodown}’s functionality in two ways:
@@ -77,8 +80,6 @@ To render this part into a special info or warn box we can wrap it using
 a fenced (pandoc) div using three colons `:::`:
 
     ::: {.info-box title="Title of my info box"}
-    ```{r, child="path_to_child_document.Rmd"}
-    ```
     :::
 
 All we have to do is to specify either `{.info-box}` or `{.warn-box}`
@@ -101,8 +102,6 @@ Below is a full example:
 
     ::: {.info-box title="Title of my info box"}
 
-    ```{r, child="path_to_child_document.Rmd"}
-    ```
     :::
 
 This alone will just render an expandable box using the `<details>` and
@@ -203,7 +202,7 @@ After I spent quite some time creating and customizing my
 {hugodown}, quarto became a big thing and I saw a lot of stuff I liked
 and wanted to bring to my own blog. Especially a table of content, the
 expandable session info as well as warn and info boxes. While I could
-figure out the former two, I got help from Safayet on SO regarding the
+figure out the former two, I got help from Shafayet on SO regarding the
 info and warn boxes. After implementing all of this, I had a lot of
 custom functions in my website project and the idea was to package it
 up, so that it is easier to maintain, and others might benefit from it.
