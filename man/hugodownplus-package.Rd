@@ -14,6 +14,7 @@ hugodownplus extends 'hugodown's md_document with toc and HTML boxes. It allows 
 Useful links:
 \itemize{
   \item \url{https://github.com/TimTeaFan/hugodownplus}
+  \item \url{https://timteafan.github.io/hugodownplus/}
   \item Report bugs at \url{https://github.com/TimTeaFan/hugodownplus/issues}
 }
 
