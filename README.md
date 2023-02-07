@@ -28,13 +28,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
     `hugodownplus::md_markdown()` instead allows the use of a number of
     additional arguments - most of them borrowed from
     `rmarkdown::md_document()`:
-
-- a table of content `toc` with a specified `toc_depth`
-- HTML boxes via lua filters (more on this below) `use_boxes`
-- additional content to be included within the document `includes`
-- additional command line options to pass to pandoc `pandoc_args`
-
-1.  A new argument-less function `child_session_info()` which can be
+    - a table of content `toc` with a specified `toc_depth`
+    - HTML boxes via lua filters (more on this below) `use_boxes`
+    - additional content to be included within the document `includes`
+    - additional command line options to pass to pandoc `pandoc_args`
+2.  A new argument-less function `child_session_info()` which can be
     used as inline code in an Rmd file to create a child document
     containing an expandable box showing the session info.
 
