@@ -1,3 +1,54 @@
+<style>
+  :root {
+    --border-color: #dee2e6;
+    --border-width: 1px;
+    --border-radius: 0.25rem;
+  }
+
+  div.info-box,
+  div.warn-box {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  div.info-box summary,
+  div.warn-box summary {
+    color: #003B4F;
+    font-family: monospace;
+    font-size: 0.9em;
+    background-color: rgba(219,219,219,.8);
+    margin-bottom: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    padding-left: 0.7em;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    border-bottom: 0;
+  }
+
+  div.info-box details[open] summary,
+  div.warn-box details[open] summary {
+    color: #6c757d;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+  }
+
+
+  div.info-box .note-details,
+  div.warn-box .warn-details {
+    padding: 1em;
+    background-color: #f7f7f7;
+    border: 1px solid rgba(233,236,239,.65);
+  }
+
+  div.info-box .highlight pre, div.info-box pre,
+  div.warn-box .highlight pre, div.warn-box pre {
+    background-color: rgba(233,236,239,.65);
+  }
+
+</style>
+
+
 <script>
   function create_info_box(title, content) {
     let summary = document.createElement("summary");
@@ -65,6 +116,9 @@
     });
   };
 
-  window.onload = info_box();
-  window.onload = warn_box();
+  function load_boxes() {
+    info_box();
+    warn_box();
+  }
+  window.onload = load_boxes();
 </script>
