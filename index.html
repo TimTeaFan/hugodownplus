@@ -125,13 +125,13 @@
 <div class="section level2">
 <h2 id="how-to-use-html-boxes">How to use HTML boxes<a class="anchor" aria-label="anchor" href="#how-to-use-html-boxes"></a>
 </h2>
-<p>While most of the new arguments to <code><a href="reference/md_document.html">md_document()</a></code> already described and implemented in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/md_document.html" class="external-link">rmarkdown::md_document()</a></code>, we will focus on the one completely new feature of {hugodownplus}, its expandable HTML boxes.</p>
-<p>The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping a child Rmd document into a fenced (pandoc) div with <code>:::</code> and link a child document whose content will be rendered into a info or warn box. The other way is to call <code><a href="reference/child_session_info.html">child_session_info()</a></code> as inline R code to generate an expandable box containing the session info.</p>
-<p>Let’s elaborate on both options a litte.</p>
+<p>While most of the new arguments to <code><a href="reference/md_document.html">md_document()</a></code> are already described and implemented in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/md_document.html" class="external-link">rmarkdown::md_document()</a></code>, we will focus on the one completely new feature of {hugodownplus}: its expandable HTML boxes.</p>
+<p>The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping a child Rmd document into a fenced (pandoc) div with <code>:::</code> and link a child document whose content will be rendered into an info or warn box. The other way is to call <code><a href="reference/child_session_info.html">child_session_info()</a></code> as inline R code to generate an expandable box containing the session info.</p>
+<p>Let’s elaborate on both options a little.</p>
 <div class="section level4">
-<h4 id="info-and-warn-boxes">info and warn boxes<a class="anchor" aria-label="anchor" href="#info-and-warn-boxes"></a>
+<h4 id="info-and-warn-boxes">Info and warn boxes<a class="anchor" aria-label="anchor" href="#info-and-warn-boxes"></a>
 </h4>
-<p>We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in furhter.</p>
+<p>We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.</p>
 <p>To generate an info or warn box we need an actual Rmd file containing text and or code. Usually we would include this child document in our main (blog post) document as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r, child="path_to_child_document.Rmd"}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span></code></pre></div>
@@ -172,7 +172,7 @@
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-details</span> {</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Note that the class inside the fenced (pandoc) div <code>:::</code> is called <code>.info-box</code>, but the CSS classes are called <code>.note</code>. The <code>info</code> is a too common class which is why the CSS selectors take <code>.note</code> as class.</p>
+<p>Note that the class inside the fenced (pandoc) div <code>:::</code> is called <code>.info-box</code>, but the CSS classes are called <code>.note</code>. This is because <code>info</code> is a very common class which is why the CSS selectors take <code>.note</code> as class instead.</p>
 <p>Similarly, the CSS selectors for the warn box look like this:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn</span> {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the whole box */</span></span>
@@ -190,7 +190,7 @@
 <div class="section level4">
 <h4 id="child-info-session">child info session<a class="anchor" aria-label="anchor" href="#child-info-session"></a>
 </h4>
-<p>As mentioned above, we can create an expandable box containing the current info session by using the <code>child_info_session()</code> function as inline R code in an Rmd file.</p>
+<p>As mentioned above, we can create an expandable box containing the current session info by using the <code>child_info_session()</code> function as inline R code in an Rmd file.</p>
 <p>Below is an example:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> hugodownplus<span class="sc">::</span>md_document</span>
@@ -209,7 +209,7 @@
 <div class="section level2">
 <h2 id="history--idea">History &amp; Idea<a class="anchor" aria-label="anchor" href="#history--idea"></a>
 </h2>
-<p>After I spent quite some time creating and customizing my <a href="https://tim-tiefenbach.de" class="external-link">website</a>, which I made with Hugo and {hugodown}, quarto became a big thing and I saw a lot of stuff I liked and wanted to bring to my own blog. Especially a table of content, the expandable session info as well as warn and info boxes. While I could figure out the former two, I got help from Shafayet on SO regarding the info and warn boxes. After implementing all of this, I had a lot of custom functions in my website project and the idea was to package it up, so that it is easier to maintain, and others might benefit from it.</p>
+<p>After I spent quite some time creating and customizing my <a href="https://tim-tiefenbach.de" class="external-link">website</a>, which I made with Hugo and {hugodown}, quarto became a big thing and I saw a lot of stuff I liked and wanted to bring to my own blog. Especially a table of content, the expandable session info as well as warn and info boxes. While I could figure out the former two, I got help from Shafayet on SO regarding the info and warn boxes. After implementing all of this, I had a lot of custom functions and files in my website project and the idea was to package it up, so that it is easier to maintain, and others might benefit from it too.</p>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
@@ -220,7 +220,10 @@
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h2>
-<p>This package does’t come with any official tests 😱. Nevertheless, I’m regularly using it to create blog posts on my website, and so far I haven’t encountered any issues - which is of course no guarantee that you won’t. If you run into one, I’d be happy if you file an issue <a href="https://github.com/TimTeaFan/hugodownplus/issues" class="external-link">here</a>.</p>
+<ol style="list-style-type: decimal">
+<li><p>This package doesn’t come with any official tests 😱. Nevertheless, I’m using it to create blog posts on my website, and so far I haven’t encountered any issues - which is of course no guarantee that you won’t. If you run into one, I’d be happy if you file an issue <a href="https://github.com/TimTeaFan/hugodownplus/issues" class="external-link">here</a>.</p></li>
+<li><p>This package more or less contradicts the original philosophy of the {hugodown} package, which was designed to yield a streamlined, highly minimal HTML output. I do like {hugodown} very much, and think extending it is the better way (for me) compared to switching to a different package like {blogdown}.</p></li>
+</ol>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
