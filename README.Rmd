@@ -1,7 +1,5 @@
 ---
-output:
-  hugodownplus::md_document:
-    use_boxes: TRUE
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -98,10 +96,15 @@ Some text
 :::')
 ```
 
-::: {.info-box title="Title of my info box"}
+<div class="note" markdown="1">
+<details class="note">
+  <summary class="note-header" markdown="1">
+  My Info Box Title <i class="fas fa-info-circle"></i>
+  </summary>
 ```{r, child = here::here("inst/rmdtmp/test_child.Rmd")}
 ```
-:::
+  </details>
+</div>
 
 
 This alone will just render an expandable box using the `<details>` and `<summary>` HTML tags. All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the info-box:

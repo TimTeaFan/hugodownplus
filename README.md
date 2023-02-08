@@ -1,10 +1,3 @@
----
-output:
-  hugodownplus::md_document:
-    use_boxes: TRUE
-rmd_hash: 059412004f017caf
-
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -12,7 +5,11 @@ rmd_hash: 059412004f017caf
 
 <!-- badges: start -->
 
-![Release status](https://img.shields.io/badge/status-first%20release-yellow) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) ![CRAN status](https://img.shields.io/badge/CRAN-not%20published-red)
+![Release
+status](https://img.shields.io/badge/status-first%20release-yellow)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![CRAN status](https://img.shields.io/badge/CRAN-not%20published-red)
 
 <!-- badges: end -->
 
@@ -24,108 +21,121 @@ rmd_hash: 059412004f017caf
 
 </p>
 
-{hugodownplus} extends {hugodown}'s functionality in two ways:
+{hugodownplus} extends {hugodown}’s functionality in two ways:
 
-1.  It offers a drop-in replacement for the minimalistic `hugodown::md_markdown()` output format. Using `hugodownplus::md_markdown()` instead allows the use of a number of additional arguments - most of them borrowed from [`rmarkdown::md_document()`](https://pkgs.rstudio.com/rmarkdown/reference/md_document.html):
-    -   a table of content `toc` with a specified `toc_depth`
-    -   HTML boxes via lua filters (more on this below) `use_boxes`
-    -   additional content to be included within the document `includes`
-    -   additional command line options to pass to pandoc `pandoc_args`
-2.  A new argument-less function `child_session_info()` which can be used as inline code in an Rmd file to create a child document containing an expandable box showing the session info.
+1.  It offers a drop-in replacement for the minimalistic
+    `hugodown::md_markdown()` output format. Using
+    `hugodownplus::md_markdown()` instead allows the use of a number of
+    additional arguments - most of them borrowed from
+    `rmarkdown::md_document()`:
+    - a table of content `toc` with a specified `toc_depth`
+    - HTML boxes via lua filters (more on this below) `use_boxes`
+    - additional content to be included within the document `includes`
+    - additional command line options to pass to pandoc `pandoc_args`
+2.  A new argument-less function `child_session_info()` which can be
+    used as inline code in an Rmd file to create a child document
+    containing an expandable box showing the session info.
 
 ## Installation
 
-`{hugodownplus}` is not on CRAN yet. You can install the latest version from [GitHub](https://github.com/TimTeaFan/hugodownplus) with:
+`{hugodownplus}` is not on CRAN yet. You can install the latest version
+from [GitHub](https://github.com/TimTeaFan/hugodownplus) with:
 
-<div class="highlight">
-
-<pre class='chroma'><code class='language-r' data-lang='r'><span><span class='nf'>remotes</span><span class='nf'>::</span><span class='nf'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='o'>(</span><span class='s'>"TimTeaFan/hugodownplus"</span><span class='o'>)</span></span></code></pre>
-
-</div>
+``` r
+remotes::install_github("TimTeaFan/hugodownplus")
+```
 
 ## How to use HTML boxes
 
-While most of the new arguments to `md_document()` are already described and implemented in [`rmarkdown::md_document()`](https://pkgs.rstudio.com/rmarkdown/reference/md_document.html), we will focus on the one completely new feature of {hugodownplus}: its expandable HTML boxes.
+While most of the new arguments to `md_document()` are already described
+and implemented in `rmarkdown::md_document()`, we will focus on the one
+completely new feature of {hugodownplus}: its expandable HTML boxes.
 
-The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping a child Rmd document into a fenced (pandoc) div with `:::` and link a child document whose content will be rendered into an info or warn box. The other way is to call `child_session_info()` as inline R code to generate an expandable box containing the session info.
+The are two ways of using expandable HTML boxes with {hugodownplus}. One
+is wrapping a child Rmd document into a fenced (pandoc) div with `:::`
+and link a child document whose content will be rendered into an info or
+warn box. The other way is to call `child_session_info()` as inline R
+code to generate an expandable box containing the session info.
 
-Let's elaborate on both options a little.
+Let’s elaborate on both options a little.
 
 #### Info and warn boxes
 
-We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.
+We can generate info and warn boxes based on external Rmd child
+documents. The idea is that, in a blog post on topic X, we might want to
+talk a bit more about details of a related concept Y. This might not be
+interesting for every reader, so we can put this part in an expandable
+box, and those interested, can dive in further.
 
-To generate an info or warn box we need an actual Rmd file containing text and or code. Usually we would include this child document in our main (blog post) document as follows:
+To generate an info or warn box we need an actual Rmd file containing
+text and or code. Usually we would include this child document in our
+main (blog post) document as follows:
 
-<div class="highlight">
+    ```{r, child="path_to_child_document.Rmd"}
+    ```
 
-<pre class='chroma'><code class='language-r' data-lang='r'>```{r, child="path_to_child_document.Rmd"}
-```
-</code></pre>
+To render this part into a special info or warn box we can wrap it using
+a fenced (pandoc) div using three colons `:::`:
 
-</div>
+    ::: {.info-box title="Title of my info box"}
+    ```{r, child="path_to_child_document.Rmd"}
+    ```
+    :::
 
-To render this part into a special info or warn box we can wrap it using a fenced (pandoc) div using three colons `:::`:
-
-<div class="highlight">
-
-<pre class='chroma'><code class='language-r' data-lang='r'>::: {.info-box title="Title of my info box"}
-```{r, child="path_to_child_document.Rmd"}
-```
-:::
-</code></pre>
-
-</div>
-
-All we have to do is to specify either `{.info-box}` or `{.warn-box}` and a `title` which should be shown in the header of the box.
+All we have to do is to specify either `{.info-box}` or `{.warn-box}`
+and a `title` which should be shown in the header of the box.
 
 Below is a full example:
 
-<div class="highlight">
+    ---
+    output:
+      hugodownplus::md_document:
+        use_boxes: TRUE
 
-<pre class='chroma'><code class='language-r' data-lang='r'>---
-output:
-  hugodownplus::md_document:
-    use_boxes: TRUE
+    title: "Article title"
+    # other arguments continuing here ...
+    ---
 
-title: "Article title"
-# other arguments continuing here ...
----
+    # Heading 1
 
-# Heading 1
+    Some text
 
-Some text
+    ::: {.info-box title="Title of my info box"}
+    ```{r, child="path_to_child_document.Rmd"}
+    ```
+    :::
 
-::: {.info-box title="Title of my info box"}
-```{r, child="path_to_child_document.Rmd"}
-```
-:::
-</code></pre>
+<div class="note" markdown="1">
 
-</div>
+<details class="note">
+<summary class="note-header">
+My Info Box Title <i class="fas fa-info-circle"></i>
+</summary>
 
-<div class="info-box" title="Title of my info box">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
-<div class="highlight">
-
-<pre class='chroma'><code class='language-r' data-lang='r'><span><span class='c'># Some R code</span></span>
-<span><span class='m'>1</span> <span class='o'>+</span> <span class='m'>1</span></span>
+``` r
+# Some R code
+1 + 1
 [1] 2
-</code></pre>
+```
+
+tet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+erat, sed diam voluptua.
+</details>
 
 </div>
 
-tet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+This alone will just render an expandable box using the `<details>` and
+`<summary>` HTML tags. All the formatting that we may want to apply has
+to happen in CSS. The following classes can be used for the info-box:
 
-</div>
-
-This alone will just render an expandable box using the `<details>` and `<summary>` HTML tags. All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the info-box:
-
-<div class="highlight">
-
-<pre class='chroma'><code class='language-r' data-lang='r'>.note {
+``` css
+.note {
   /* customize the whole box */
 }
 
@@ -137,17 +147,17 @@ summary.note-header,
 .note-details {
   /* customize the content of the box */
 }
-</code></pre>
+```
 
-</div>
-
-Note that the class inside the fenced (pandoc) div `:::` is called `.info-box`, but the CSS classes are called `.note`. This is because `info` is a very common class which is why the CSS selectors take `.note` as class instead.
+Note that the class inside the fenced (pandoc) div `:::` is called
+`.info-box`, but the CSS classes are called `.note`. This is because
+`info` is a very common class which is why the CSS selectors take
+`.note` as class instead.
 
 Similarly, the CSS selectors for the warn box look like this:
 
-<div class="highlight">
-
-<pre class='chroma'><code class='language-r' data-lang='r'>.warn {
+``` css
+.warn {
   /* customize the whole box */
 }
 
@@ -159,118 +169,66 @@ summary.warn-header,
 .warn-details {
   /* customize the content of the box */
 }
-</code></pre>
-
-</div>
+```
 
 #### child info session
 
-As mentioned above, we can create an expandable box containing the current session info by using the `child_info_session()` function as inline R code in an Rmd file.
+As mentioned above, we can create an expandable box containing the
+current session info by using the `child_info_session()` function as
+inline R code in an Rmd file.
 
 Below is an example:
 
-<div class="highlight">
+    ---
+    output: hugodownplus::md_document
 
-<pre class='chroma'><code class='language-r' data-lang='r'>---
-output: hugodownplus::md_document
+    title: "Article title"
+    # other arguments continuing here ...
+    ---
 
-title: "Article title"
-# other arguments continuing here ...
----
+    # Heading 1
 
-# Heading 1
+    Some text
 
-Some text
-
-`r child_info_session()`
-</code></pre>
-
-</div>
+    `r child_info_session()`
 
 ## History & Idea
 
-After I spent quite some time creating and customizing my [website](https://tim-tiefenbach.de), which I made with Hugo and {hugodown}, quarto became a big thing and I saw a lot of stuff I liked and wanted to bring to my own blog. Especially a table of content, the expandable session info as well as warn and info boxes. While I could figure out the former two, I got help from Shafayet on SO regarding the info and warn boxes. After implementing all of this, I had a lot of custom functions and files in my website project and the idea was to package it up, so that it is easier to maintain, and others might benefit from it too.
+After I spent quite some time creating and customizing my
+[website](https://tim-tiefenbach.de), which I made with Hugo and
+{hugodown}, quarto became a big thing and I saw a lot of stuff I liked
+and wanted to bring to my own blog. Especially a table of content, the
+expandable session info as well as warn and info boxes. While I could
+figure out the former two, I got help from Shafayet on SO regarding the
+info and warn boxes. After implementing all of this, I had a lot of
+custom functions and files in my website project and the idea was to
+package it up, so that it is easier to maintain, and others might
+benefit from it too.
 
 ## Acknowledgements
 
-This package doesn't contain much original content. The main function `md_document()` is basically copied from {hugodown} and extended by code found in [`rmarkdown::md_document()`](https://pkgs.rstudio.com/rmarkdown/reference/md_document.html) (both hugodown's and rmarkdown's licenses and copyrights apply!). The only unique part about this package is the use of HTML boxes and this part was written by Shafayet Khan Shafee who answered two of my Rmarkdown questions on [SO](https://stackoverflow.com/questions/75251741/wrap-rmarkdown-child-in-additional-html).
+This package doesn’t contain much original content. The main function
+`md_document()` is basically copied from {hugodown} and extended by code
+found in `rmarkdown::md_document()` (both hugodown’s and rmarkdown’s
+licenses and copyrights apply!). The only unique part about this package
+is the use of HTML boxes and this part was written by Shafayet Khan
+Shafee who answered two of my Rmarkdown questions on
+[SO](https://stackoverflow.com/questions/75251741/wrap-rmarkdown-child-in-additional-html).
 
-If this package is working correctly, all the credit should go to the creators and maintainers of the original packages, {hugodown} and {rmarkdown}, as well as to Shafayet.
+If this package is working correctly, all the credit should go to the
+creators and maintainers of the original packages, {hugodown} and
+{rmarkdown}, as well as to Shafayet.
 
 ## Disclaimer
 
-1.  This package doesn't come with any official tests 😱. Nevertheless, I'm using it to create blog posts on my website, and so far I haven't encountered any issues - which is of course no guarantee that you won't. If you run into one, I'd be happy if you file an issue [here](https://github.com/TimTeaFan/hugodownplus/issues).
+1.  This package doesn’t come with any official tests 😱. Nevertheless,
+    I’m using it to create blog posts on my website, and so far I
+    haven’t encountered any issues - which is of course no guarantee
+    that you won’t. If you run into one, I’d be happy if you file an
+    issue [here](https://github.com/TimTeaFan/hugodownplus/issues).
 
-2.  This package more or less contradicts the original philosophy of the {hugodown} package, which was designed to yield a streamlined, highly minimal HTML output. I do like {hugodown} very much, and think extending it is the better way (for me) compared to switching to a different package like {blogdown}.
-
-<script>
-  function create_info_box(title, content) {
-    let summary = document.createElement("summary");
-    summary.classList.add("note-header");
-    summary.setAttribute("markdown", "1");
-
-    let summary_title = document.createTextNode(title)
-    let summary_icon = document.createElement('i');
-    summary_icon.classList.add("fas", "fa-info-circle");
-    summary.append(summary_title, summary_icon);
-
-    let div_note_details = document.createElement("div");
-    div_note_details.classList.add('note-details');
-    div_note_details.append(...content)
-
-    let details = document.createElement('details');
-    details.append(summary, div_note_details);
-
-    let div_note = document.createElement("div");
-    div_note.classList.add('note');
-    div_note.setAttribute("markdown", "1");
-    div_note.append(details);
-    return(div_note)
-  };
-
-  function create_warn_box(title, content) {
-    let summary = document.createElement("summary");
-    summary.classList.add("warn-header");
-    summary.setAttribute("markdown", "1");
-
-    let summary_title = document.createTextNode(title)
-    let summary_icon = document.createElement('i');
-    summary_icon.classList.add("fas", "fa-exclamation-circle");
-    summary.append(summary_title, summary_icon);
-
-    let div_warn_details = document.createElement("div");
-    div_warn_details.classList.add('warn-details');
-    div_warn_details.append(...content)
-
-    let details = document.createElement('details');
-    details.append(summary, div_warn_details);
-
-    let div_warn = document.createElement("div");
-    div_warn.classList.add('warn');
-    div_warn.setAttribute("markdown", "1");
-    div_warn.append(details);
-    return(div_warn)
-  };
-
-  function info_box() {
-    let childs = document.querySelectorAll("div.info-box");
-    childs.forEach(el => {
-      let title = el.title
-      let info_box = create_info_box(title, el.childNodes);
-      el.append(info_box)
-    });
-  };
-
-  function warn_box() {
-    let childs = document.querySelectorAll("div.warn-box");
-    childs.forEach(el => {
-      let title = el.title
-      let warn_box = create_warn_box(title, el.childNodes);
-      el.append(warn_box)
-    });
-  };
-
-  window.onload = info_box();
-  window.onload = warn_box();
-</script>
-
+2.  This package more or less contradicts the original philosophy of the
+    {hugodown} package, which was designed to yield a streamlined,
+    highly minimal HTML output. I do like {hugodown} very much, and
+    think extending it is the better way (for me) compared to switching
+    to a different package like {blogdown}.
