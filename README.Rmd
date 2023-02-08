@@ -57,7 +57,7 @@ Let's elaborate on both options a little.
 
 #### Info and warn boxes
 
-We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in furhter.
+We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.
 
 To generate an info or warn box we need an actual Rmd file containing text and or code. Usually we would include this child document in our main (blog post) document as follows:
 
@@ -166,4 +166,6 @@ If this package is working correctly, all the credit should go to the creators a
 
 ## Disclaimer
 
-This package does't come with any official tests 😱. Nevertheless, I'm using it to create blog posts on my website, and so far I haven't encountered any issues - which is of course no guarantee that you won't. If you run into one, I'd be happy if you file an issue [here](https://github.com/TimTeaFan/hugodownplus/issues).
+1. This package doesn't come with any official tests 😱. Nevertheless, I'm using it to create blog posts on my website, and so far I haven't encountered any issues - which is of course no guarantee that you won't. If you run into one, I'd be happy if you file an issue [here](https://github.com/TimTeaFan/hugodownplus/issues).
+
+2. This package more or less contradicts the original philosophy of the {hugodown} package, which was designed to yield a streamlined, highly minimal HTML output. I do like {hugodown} very much, and think extending it is the better way (for me) compared to switching to a different package like {blogdown}.
