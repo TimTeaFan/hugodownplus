@@ -36,7 +36,7 @@
 #' @export
 md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,
                          use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
-                         standalone = FALSE, includes = NULL, pandoc_args = NULL) {
+                         standalone = FALSE, includes = NULL, pandoc_args = NULL, css = NULL) {
 
   if (use_boxes) {
 
@@ -153,7 +153,9 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
   rmarkdown::output_format(knitr = knitr, pandoc = pandoc,
                            pre_processor = preprocess, post_processor = postprocess,
                            pre_knit = pre_knit, post_knit = hack_always_allow_html,
-                           on_exit = on_exit)
+                           on_exit = on_exit,
+                           if (!is.null(css)) base_format = rmarkdown:::html_document_base(css = css)
+                           )
 }
 
 goldmark_format <- function() {
