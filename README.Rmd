@@ -51,21 +51,15 @@ remotes::install_github("TimTeaFan/hugodownplus")
 
 While most of the new arguments to `md_document()` are already described and implemented in `rmarkdown::md_document()`, we will focus on the one completely new feature of {hugodownplus}: its expandable HTML boxes.
 
-The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping a child Rmd document into a fenced (pandoc) div with `:::` and link a child document whose content will be rendered into an info or warn box. The other way is to call `child_session_info()` as inline R code to generate an expandable box containing the session info.
+The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping a child Rmd document into a fenced (pandoc) div with `:::` and link a child document whose content will be rendered into an info, warn or output box. The other way is to call `child_session_info()` as inline R code to generate an expandable box containing the session info.
 
 Let's elaborate on both options a little.
 
-#### Info and warn boxes
+#### Info, warn and output boxes
 
-We can generate info and warn boxes based on external Rmd child documents. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.
+`hugodownplus::md_document()` can generate info, warn and output boxes. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.
 
-To generate an info or warn box we need an actual Rmd file containing text and or code. Usually we would include this child document in our main (blog post) document as follows:
-
-```{R, echo = FALSE}
-cat('```{r, child="path_to_child_document.Rmd"}\n```')
-```
-
-To render this part into a special info or warn box we can wrap it using a fenced (pandoc) div using three colons `:::`:
+To generate an info, warn or output box we just wrap text and/ or code (or a child document) into a fenced (pandoc) div using three colons `:::` before and after the part that we want to put into a box:
 
 ```{R, echo = FALSE}
 cat('::: {.info-box title="Title of my info box"}
@@ -73,7 +67,7 @@ cat('::: {.info-box title="Title of my info box"}
 :::')
 ```
 
-All we have to do is to specify either `{.info-box}` or `{.warn-box}` and a `title` which should be shown in the header of the box.
+All we have to do is to specify either `{.info-box}`, `{.warn-box}` or `{.output-box}` and a `title` which should be shown in the header of the box.
 
 Below is a full example:
 
