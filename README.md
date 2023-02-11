@@ -47,43 +47,38 @@ remotes::install_github("TimTeaFan/hugodownplus")
 
 ## How to use HTML boxes
 
-While most of the new arguments to `md_document()` already described and
-implemented in `rmarkdown::md_document()`, we will focus on the one
-completely new feature of {hugodownplus}, its expandable HTML boxes.
+While most of the new arguments to `md_document()` are already described
+and implemented in `rmarkdown::md_document()`, we will focus on the one
+completely new feature of {hugodownplus}: its expandable HTML boxes.
 
 The are two ways of using expandable HTML boxes with {hugodownplus}. One
 is wrapping a child Rmd document into a fenced (pandoc) div with `:::`
-and link a child document whose content will be rendered into a info or
-warn box. The other way is to call `child_session_info()` as inline R
-code to generate an expandable box containing the session info.
+and link a child document whose content will be rendered into an info,
+warn or output box. The other way is to call `child_session_info()` as
+inline R code to generate an expandable box containing the session info.
 
-Let’s elaborate on both options a litte.
+Let’s elaborate on both options a little.
 
-#### info and warn boxes
+#### Info, warn and output boxes
 
-We can generate info and warn boxes based on external Rmd child
-documents. The idea is that, in a blog post on topic X, we might want to
-talk a bit more about details of a related concept Y. This might not be
-interesting for every reader, so we can put this part in an expandable
-box, and those interested, can dive in furhter.
+`hugodownplus::md_document()` can generate info, warn and output boxes.
+The idea is that, in a blog post on topic X, we might want to talk a bit
+more about details of a related concept Y. This might not be interesting
+for every reader, so we can put this part in an expandable box, and
+those interested, can dive in further.
 
-To generate an info or warn box we need an actual Rmd file containing
-text and or code. Usually we would include this child document in our
-main (blog post) document as follows:
-
-    ```{r, child="path_to_child_document.Rmd"}
-    ```
-
-To render this part into a special info or warn box we can wrap it using
-a fenced (pandoc) div using three colons `:::`:
+To generate an info, warn or output box we just wrap text and/ or code
+(or a child document) into a fenced (pandoc) div using three colons
+`:::` before and after the part that we want to put into a box:
 
     ::: {.info-box title="Title of my info box"}
     ```{r, child="path_to_child_document.Rmd"}
     ```
     :::
 
-All we have to do is to specify either `{.info-box}` or `{.warn-box}`
-and a `title` which should be shown in the header of the box.
+All we have to do is to specify either `{.info-box}`, `{.warn-box}` or
+`{.output-box}` and a `title` which should be shown in the header of the
+box.
 
 Below is a full example:
 
@@ -125,8 +120,9 @@ summary.note-header,
 ```
 
 Note that the class inside the fenced (pandoc) div `:::` is called
-`.info-box`, but the CSS classes are called `.note`. The `info` is a too
-common class which is why the CSS selectors take `.note` as class.
+`.info-box`, but the CSS classes are called `.note`. This is because
+`info` is a very common class which is why the CSS selectors take
+`.note` as class instead.
 
 Similarly, the CSS selectors for the warn box look like this:
 
@@ -148,7 +144,7 @@ summary.warn-header,
 #### child info session
 
 As mentioned above, we can create an expandable box containing the
-current info session by using the `child_info_session()` function as
+current session info by using the `child_info_session()` function as
 inline R code in an Rmd file.
 
 Below is an example:
@@ -175,8 +171,9 @@ and wanted to bring to my own blog. Especially a table of content, the
 expandable session info as well as warn and info boxes. While I could
 figure out the former two, I got help from Shafayet on SO regarding the
 info and warn boxes. After implementing all of this, I had a lot of
-custom functions in my website project and the idea was to package it
-up, so that it is easier to maintain, and others might benefit from it.
+custom functions and files in my website project and the idea was to
+package it up, so that it is easier to maintain, and others might
+benefit from it too.
 
 ## Acknowledgements
 
@@ -194,8 +191,14 @@ creators and maintainers of the original packages, {hugodown} and
 
 ## Disclaimer
 
-This package does’t come with any official tests 😱. Nevertheless, I’m
-regularly using it to create blog posts on my website, and so far I
-haven’t encountered any issues - which is of course no guarantee that
-you won’t. If you run into one, I’d be happy if you file an issue
-[here](https://github.com/TimTeaFan/hugodownplus/issues).
+1.  This package doesn’t come with any official tests 😱. Nevertheless,
+    I’m using it to create blog posts on my website, and so far I
+    haven’t encountered any issues - which is of course no guarantee
+    that you won’t. If you run into one, I’d be happy if you file an
+    issue [here](https://github.com/TimTeaFan/hugodownplus/issues).
+
+2.  This package more or less contradicts the original philosophy of the
+    {hugodown} package, which was designed to yield a streamlined,
+    highly minimal HTML output. I do like {hugodown} very much, and
+    think extending it is the better way (for me) compared to switching
+    to a different package like {blogdown}.

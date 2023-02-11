@@ -98,6 +98,30 @@
     return(div_warn)
   };
 
+  function create_output_box(title, content) {
+    let summary = document.createElement("summary");
+    summary.classList.add("output-header");
+    summary.setAttribute("markdown", "1");
+
+    let summary_title = document.createTextNode(title)
+    let summary_icon = document.createElement('i');
+    summary_icon.classList.add("fas", "fa-laptop-code");
+    summary.append(summary_title, summary_icon);
+
+    let div_output_details = document.createElement("div");
+    div_output_details.classList.add('output-details');
+    div_output_details.append(...content)
+
+    let details = document.createElement('details');
+    details.append(summary, div_output_details);
+
+    let div_output = document.createElement("div");
+    div_output.classList.add('output');
+    div_output.setAttribute("markdown", "1");
+    div_output.append(details);
+    return(div_output)
+  };
+
   function info_box() {
     let childs = document.querySelectorAll("div.info-box");
     childs.forEach(el => {
@@ -116,9 +140,20 @@
     });
   };
 
-  function load_boxes() {
-    info_box();
-    warn_box();
-  }
+  function output_box() {
+    let childs = document.querySelectorAll("div.output-box");
+    childs.forEach(el => {
+      let title = el.title
+      let output_box = create_output_box(title, el.childNodes);
+      el.append(output_box)
+    });
+  };
+
+ function load_boxes() {
+     info_box();
+     warn_box();
+     output_box();
+   }
+   
   window.onload = load_boxes();
 </script>
