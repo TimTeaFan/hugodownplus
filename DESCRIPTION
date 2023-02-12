@@ -31,3 +31,6 @@ Imports:
     rmarkdown,
     sessioninfo,
     yaml
+Suggests: 
+    knitr
+VignetteBuilder: knitr

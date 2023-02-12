@@ -9,7 +9,7 @@ md_document(
   toc_depth = 3,
   fig_width = 7,
   fig_asp = 0.618,
-  use_boxes = FALSE,
+  use_boxes = c("none", "minimal", "styled"),
   fig_retina = 2,
   tidyverse_style = TRUE,
   standalone = FALSE,
@@ -18,15 +18,22 @@ md_document(
 )
 }
 \arguments{
-\item{toc}{TRUE to include a table of contents in the output}
+\item{toc}{TRUE to include a table of contents in the output.}
 
-\item{toc_depth}{Depth of headers to include in table of contents}
+\item{toc_depth}{Depth of headers to include in table of contents.}
 
 \item{fig_width}{Figure width (in inches).}
 
 \item{fig_asp}{Figure aspect ratio, defaults to the golden ratio.}
 
-\item{use_boxes}{TRUE to allow the use of info, warn and session boxes. If TRUE \code{includes} must not contain additional parameters.}
+\item{use_boxes}{defaults to "none" which doesn't support expandable HTML boxes.
+
+When set to "minimal" expandable boxes wrapped in fanced pandoc divs (\code{:::}) are rendered,
+but all the CSS styling has to be explicitly defined by the user - either using inline code or
+an external CSS file.
+
+When set to "styled" predefined CSS styles are applied to each box type. The style can be
+easily changed by overwriting custom CSS variables (see vignette: \href{../doc/customize-boxes.html}{\code{vignette("customize-boxes", package = "hugodownplus")}}).}
 
 \item{fig_retina}{Scaling to perform for retina displays. Defaults to
 \code{NULL} which performs no scaling. A setting of 2 will work for all
@@ -34,7 +41,7 @@ widely used retina displays, but will also result in the output of
 \verb{<img>} tags rather than markdown images due to the need to set the
 width of the image explicitly.}
 
-\item{tidyverse_style}{Use tidyverse knitr conventions? This sets}
+\item{tidyverse_style}{Use tidyverse knitr conventions?}
 
 \item{standalone}{Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.}
 

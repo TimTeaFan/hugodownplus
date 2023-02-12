@@ -19,12 +19,19 @@
 #'
 #' @inheritParams rmarkdown::md_document
 #'
-#' @param toc	TRUE to include a table of contents in the output
-#' @param toc_depth	Depth of headers to include in table of contents
+#' @param toc	TRUE to include a table of contents in the output.
+#' @param toc_depth	Depth of headers to include in table of contents.
 #' @param fig_width Figure width (in inches).
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
-#' @param use_boxes TRUE to allow the use of info, warn, output and session boxes. If TRUE `includes` must not contain additional parameters.
-#' @param tidyverse_style Use tidyverse knitr conventions? This sets
+#' @param use_boxes defaults to "none" which doesn't support expandable HTML boxes.
+#'
+#'   When set to "minimal" expandable boxes wrapped in fanced pandoc divs (`:::`) are rendered,
+#'   but all the CSS styling has to be explicitly defined by the user - either using inline code or
+#'   an external CSS file.
+#'
+#'   When set to "styled" predefined CSS styles are applied to each box type. The style can be
+#'   easily changed by overwriting custom CSS variables (see vignette: \href{../doc/customize-boxes.html}{\code{vignette("customize-boxes", package = "hugodownplus")}}).
+#' @param tidyverse_style Use tidyverse knitr conventions?
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 #' @param includes Named list of additional content to include within the document (typically created using the includes function).
 #' @param pandoc_args Additional command line options to pass to pandoc
