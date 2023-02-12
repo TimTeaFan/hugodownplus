@@ -35,11 +35,18 @@
 #'
 #' @export
 md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,
-                         use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
-                         standalone = FALSE, includes = NULL, pandoc_args = NULL) {
+                         use_boxes = c("none", "minimal", "styled"), fig_retina = 2,
+                         tidyverse_style = TRUE, standalone = FALSE, includes = NULL,
+                         pandoc_args = NULL) {
 
-
-  wrap_box_file_path <- fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus")
+  use_boxes <- match.arg(use_boxes)
+  wrap_box_path <- NULL
+  if (use_boxes == "minimal") {
+    wrap_box_path <- fs::path_package("exthtml/wrap_boxes_minimal.html", package = "hugodownplus")
+  }
+  if (use_boxes == "styled") {
+    wrap_box_path <- fs::path_package("exthtml/wrap_boxes_styled.html", package = "hugodownplus")
+  }
 
   knitr <- rmarkdown::knitr_options_html(fig_height = NULL,
                                          fig_width = fig_width,
@@ -64,10 +71,11 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
   args <- c(if (standalone) "--standalone")
   args <- c(args, rmarkdown::pandoc_toc_args(toc, toc_depth),
             pandoc_args)
+
   if (!is.null(includes)) {
     args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   }
-  args <- c(args, rmarkdown::pandoc_include_args(after_body=wrap_box_file_path))
+  args <- c(args, rmarkdown::pandoc_include_args(after_body = wrap_box_path))
   args <- c(args, "--wrap=none")
 
   pandoc <- rmarkdown::pandoc_options(to = goldmark_format(),

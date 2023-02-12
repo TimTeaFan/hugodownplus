@@ -1,0 +1,272 @@
+<style>
+  :root {
+  --infobox-margin: 0px 0px 15px 0px;
+  --infobox-padding: inherit;
+  --infobox-border-color: #737373;
+  --infobox-border-width: 1px;
+  --infobox-border-radius: 0.25rem;
+  --infobox-color: inherit;
+  --infobox-background-color: inherit;
+  --infobox-font-family: inherit;
+  --infobox-font-size: 0.9rem;
+
+  --infobox-header-color: #000000;
+  --infobox-header-padding: 2px 0px 2px 0.7em;
+  --infobox-header-background-color: rgba(219,219,219,.8);
+  --infobox-header-open-background-color: rgba(219,219,219,.8);
+  --infobox-header-font-family: inherit;
+  --infobox-header-font-size: 0.9rem;
+  --infobox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+
+  --infobox-body-padding: 10px 5px 10px 10px;
+  --infobox-body-margin: 0px 0px 15px 0px;
+  --infobox-body-font-family: inherit;
+  --infobox-body-font-size: 0.9rem;
+  --infobox-body-background-color: inherit;
+  --infobox-body-color: inherit;
+
+  --infobox-code-border-width: 2px;
+  --infobox-code-border-style: dotted;
+  --infobox-code-border-color: #fff;
+  --infobox-code-margin: 0px;
+
+  --warnbox-margin: 0px 0px 15px 0px;
+  --warnbox-padding: inherit;
+  --warnbox-border-color: #737373;
+  --warnbox-border-width: 1px;
+  --warnbox-border-radius: 0.25rem;
+  --warnbox-color: inherit;
+  --warnbox-background-color: inherit;
+  --warnbox-font-family: inherit;
+  --warnbox-font-size: 0.9rem;
+
+  --warnbox-header-color: #000000;
+  --warnbox-header-padding: 2px 0px 2px 0.7em;
+  --warnbox-header-background-color: rgba(219,219,219,.8);
+  --warnbox-header-open-background-color: rgba(219,219,219,.8);
+  --warnbox-header-font-family: inherit;
+  --warnbox-header-font-size: 0.9rem;
+  --warnbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+
+  --warnbox-body-padding: 10px 5px 10px 10px;
+  --warnbox-body-margin: 0px 0px 15px 0px;
+  --warnbox-body-font-family: inherit;
+  --warnbox-body-font-size: 0.9rem;
+  --warnbox-body-background-color: inherit;
+  --warnbox-body-color: inherit;
+
+  --warnbox-code-border-width: 2px;
+  --warnbox-code-border-style: dotted;
+  --warnbox-code-border-color: #fff;
+  --warnbox-code-margin: 0px;
+}
+
+.info-box {
+  margin: var(--infobox-margin);
+}
+
+.note {
+  color: var(--infobox-color);
+  font-family: var(--infobox-font-family);
+  font-size: var(--infobox-font-size);
+  background-color: var(--infobox-background-color);
+  border: var(--infobox-border-width) solid var(--infobox-border-color);
+  border-radius: var(--infobox-border-radius);
+  padding: var(--infobox-padding);
+}
+
+div.info-box summary {
+  color: var(--infobox-header-color);
+  font-family: var(--infobox-header-font-family);
+  font-size: var(--infobox-header-font-size);
+  background-color: var(--infobox-header-background-color);
+  padding: var(--infobox-header-padding);
+  border-radius: var(--infobox-border-radius) var(--infobox-border-radius) var(--infobox-border-radius) var(--infobox-border-radius);
+}
+
+div.info-box > div.note > details[open] > summary.note-header {
+   border-radius: var(--infobox-border-radius) var(--infobox-border-radius) 0px 0px;
+   background-color: var(--infobox-header-open-background-color);
+}
+
+.note-header > i {
+  margin-left: 5px;
+}
+
+.note-details {
+  padding: var(--infobox-body-padding);
+  margin: var(--infobox-body-margin);
+  color: var(--infobox-body-color);
+  background-color: var(--infobox-body-background-color);
+  font-family: var(--infobox-body-font-family);
+  font-size: var(--infobox-body-font-size);
+}
+
+details > div.note-details > div.highlight > pre.chroma {
+  border-width: var(--infobox-code-border-width);
+  border-style: var(--infobox-code-border-style);
+  border-color: var(--infobox-code-border-color);
+  margin: var(--infobox-code-margin);
+}
+
+
+.warn-box {
+  margin: var(--warnbox-margin);
+}
+
+.warn {
+  color: var(--warnbox-color);
+  font-family: var(--warnbox-font-family);
+  font-size: var(--warnbox-font-size);
+  background-color: var(--warnbox-background-color);
+  border: var(--warnbox-border-width) solid var(--warnbox-border-color);
+  border-radius: var(--warnbox-border-radius);
+  padding: var(--warnbox-padding);
+}
+
+div.warn-box summary {
+  color: var(--warnbox-header-color);
+  font-family: var(--warnbox-header-font-family);
+  font-size: var(--warnbox-header-font-size);
+  background-color: var(--warnbox-header-background-color);
+  padding: var(--warnbox-header-padding);
+  border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius);
+}
+
+div.warn-box > div.wran > details[open] > summary.warn-header {
+   border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) 0px 0px;
+   background-color: var(--warnbox-header-open-background-color);
+}
+
+.warn-header > i {
+  margin-left: 5px;
+}
+
+.warn-details {
+  padding: var(--warnbox-body-padding);
+  margin: var(--warnbox-body-margin);
+  color: var(--warnbox-body-color);
+  background-color: var(--warnbox-body-background-color);
+  font-family: var(--warnbox-body-font-family);
+  font-size: var(--warnbox-body-font-size);
+}
+
+details > div.warn-details > div.highlight > pre.chroma {
+  border-width: var(--warnbox-code-border-width);
+  border-style: var(--warnbox-code-border-style);
+  border-color: var(--warnbox-code-border-color);
+  margin: var(--warnbox-code-margin);
+}
+
+
+</style>
+
+
+<script>
+  function create_info_box(title, content) {
+    let summary = document.createElement("summary");
+    summary.classList.add("note-header");
+    summary.setAttribute("markdown", "1");
+
+    let summary_title = document.createTextNode(title)
+    let summary_icon = document.createElement('i');
+    summary_icon.classList.add("fas", "fa-info-circle");
+    summary.append(summary_title, summary_icon);
+
+    let div_note_details = document.createElement("div");
+    div_note_details.classList.add('note-details');
+    div_note_details.append(...content)
+
+    let details = document.createElement('details');
+    details.append(summary, div_note_details);
+
+    let div_note = document.createElement("div");
+    div_note.classList.add('note');
+    div_note.setAttribute("markdown", "1");
+    div_note.append(details);
+    return(div_note)
+  };
+
+  function create_warn_box(title, content) {
+    let summary = document.createElement("summary");
+    summary.classList.add("warn-header");
+    summary.setAttribute("markdown", "1");
+
+    let summary_title = document.createTextNode(title)
+    let summary_icon = document.createElement('i');
+    summary_icon.classList.add("fas", "fa-exclamation-circle");
+    summary.append(summary_title, summary_icon);
+
+    let div_warn_details = document.createElement("div");
+    div_warn_details.classList.add('warn-details');
+    div_warn_details.append(...content)
+
+    let details = document.createElement('details');
+    details.append(summary, div_warn_details);
+
+    let div_warn = document.createElement("div");
+    div_warn.classList.add('warn');
+    div_warn.setAttribute("markdown", "1");
+    div_warn.append(details);
+    return(div_warn)
+  };
+
+  function create_output_box(title, content) {
+    let summary = document.createElement("summary");
+    summary.classList.add("output-header");
+    summary.setAttribute("markdown", "1");
+
+    let summary_title = document.createTextNode(title)
+    let summary_icon = document.createElement('i');
+    summary_icon.classList.add("fas", "fa-laptop-code");
+    summary.append(summary_title, summary_icon);
+
+    let div_output_details = document.createElement("div");
+    div_output_details.classList.add('output-details');
+    div_output_details.append(...content)
+
+    let details = document.createElement('details');
+    details.append(summary, div_output_details);
+
+    let div_output = document.createElement("div");
+    div_output.classList.add('output');
+    div_output.setAttribute("markdown", "1");
+    div_output.append(details);
+    return(div_output)
+  };
+
+  function info_box() {
+    let childs = document.querySelectorAll("div.info-box");
+    childs.forEach(el => {
+      let title = el.title
+      let info_box = create_info_box(title, el.childNodes);
+      el.append(info_box)
+    });
+  };
+
+  function warn_box() {
+    let childs = document.querySelectorAll("div.warn-box");
+    childs.forEach(el => {
+      let title = el.title
+      let warn_box = create_warn_box(title, el.childNodes);
+      el.append(warn_box)
+    });
+  };
+
+  function output_box() {
+    let childs = document.querySelectorAll("div.output-box");
+    childs.forEach(el => {
+      let title = el.title
+      let output_box = create_output_box(title, el.childNodes);
+      el.append(output_box)
+    });
+  };
+
+ function load_boxes() {
+     info_box();
+     warn_box();
+     output_box();
+   }
+
+  window.onload = load_boxes();
+</script>
