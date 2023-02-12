@@ -30,6 +30,7 @@
   --infobox-code-border-color: #fff;
   --infobox-code-margin: 0px;
 
+
   --warnbox-margin: 0px 0px 15px 0px;
   --warnbox-padding: inherit;
   --warnbox-border-color: #737373;
@@ -59,6 +60,69 @@
   --warnbox-code-border-style: dotted;
   --warnbox-code-border-color: #fff;
   --warnbox-code-margin: 0px;
+
+
+  --sessionbox-margin: 15px 0px 25px 0px;
+  --sessionbox-padding: 0px;
+  --sessionbox-border-color: #737373;
+  --sessionbox-border-width: 1px;
+  --sessionbox-border-radius: 0.25rem;
+  --sessionbox-color: inherit;
+  --sessionbox-background-color: inherit;
+  --sessionbox-font-family: inherit;
+  --sessionbox-font-size: 0.9rem;
+
+  --sessionbox-header-color: #000000;
+  --sessionbox-header-padding: 2px 0px 2px 0.7em;
+  --sessionbox-header-background-color: rgba(219,219,219,.8);
+  --sessionbox-header-open-background-color: rgba(219,219,219,.8);
+  --sessionbox-header-font-family: inherit;
+  --sessionbox-header-font-size: 0.9rem;
+  --sessionbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+
+  --sessionbox-body-padding: 10px 10px 0px 10px;
+  --sessionbox-body-margin:  0 0 10px 0;
+  --sessionbox-body-font-family: inherit;
+  --sessionbox-body-font-size: 0.9rem;
+  --sessionbox-body-background-color: inherit;
+  --sessionbox-body-color: inherit;
+
+  --sessionbox-code-border-width: 1px;
+  --sessionbox-code-border-style: dotted;
+  --sessionbox-code-border-color: #fff;
+  --sessionbox-code-margin: 0px;
+  --sessionbox-code-color: #b2b2b2;
+
+  --outputbox-margin: 0px 0px 15px 45px;
+  --outputbox-padding: inherit;
+  --outputbox-border-color: #737373;
+  --outputbox-border-width: 1px;
+  --outputbox-border-radius: 0.25rem;
+  --outputbox-color: inherit;
+  --outputbox-background-color: inherit;
+  --outputbox-font-family: inherit;
+  --outputbox-font-size: 0.9rem;
+
+  --outputbox-header-color: #000000;
+  --outputbox-header-padding: 2px 0px 2px 0.7em;
+  --outputbox-header-background-color: rgba(219,219,219,.8);
+  --outputbox-header-open-background-color: rgba(219,219,219,.8);
+  --outputbox-header-font-family: inherit;
+  --outputbox-header-font-size: 0.9rem;
+  --outputbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+
+  --outputbox-body-padding: initial;
+  --outputbox-body-margin: 0px 0px 15px 0px;
+  --outputbox-body-font-family: inherit;
+  --outputbox-body-font-size: 0.9rem;
+  --outputbox-body-background-color: inherit;
+  --outputbox-body-color: inherit;
+
+  --outputbox-code-border-width: 0px;
+  --outputbox-code-border-style: inherit;
+  --outputbox-code-border-color: inherit;
+  --outputbox-code-margin: 0px;
+
 }
 
 .info-box {
@@ -133,7 +197,7 @@ div.warn-box summary {
   border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius);
 }
 
-div.warn-box > div.wran > details[open] > summary.warn-header {
+div.warn-box > div.warn > details[open] > summary.warn-header {
    border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) 0px 0px;
    background-color: var(--warnbox-header-open-background-color);
 }
@@ -156,6 +220,107 @@ details > div.warn-details > div.highlight > pre.chroma {
   border-style: var(--warnbox-code-border-style);
   border-color: var(--warnbox-code-border-color);
   margin: var(--warnbox-code-margin);
+}
+
+
+
+.session {
+  color: var(--sessionbox-color);
+  font-family: var(--sessionbox-font-family);
+  font-size: var(--sessionbox-font-size);
+  background-color: var(--sessionbox-background-color);
+  border: var(--sessionbox-border-width) solid var(--sessionbox-border-color);
+  border-radius: var(--sessionbox-border-radius);
+  padding: var(--sessionbox-padding);
+}
+
+div.session summary {
+  color: var(--sessionbox-header-color);
+  font-family: var(--sessionbox-header-font-family);
+  font-size: var(--sessionbox-header-font-size);
+  background-color: var(--sessionbox-header-background-color);
+  padding: var(--sessionbox-header-padding);
+  border-radius: var(--sessionbox-border-radius) var(--sessionbox-border-radius) var(--sessionbox-border-radius) var(--sessionbox-border-radius);
+}
+
+div.session > details[open].sess > summary.session-header {
+  border-radius: var(--sessionbox-border-radius) var(--sessionbox-border-radius) 0px 0px;
+  background-color: var(--sessionbox-header-open-background-color);
+}
+
+.session-header > i {
+  margin-left: 5px;
+}
+
+.session-details {
+  padding: var(--sessionbox-body-padding);
+  margin: var(--sessionbox-body-margin);
+  color: var(--sessionbox-body-color);
+  background-color: var(--sessionbox-body-background-color);
+  font-family: var(--sessionbox-body-font-family);
+  font-size: var(--sessionbox-body-font-size);
+}
+
+details.sess > div.highlight > pre.chroma {
+  border-width: var(--sessionbox-code-border-width);
+  border-style: var(--sessionbox-code-border-style);
+  border-color: var(--sessionbox-code-border-color);
+  margin: var(--sessionbox-code-margin);
+  border: initial;
+}
+
+details.sess > div > pre > code > span > span > span.hljs-comment,
+details.sess > div > pre > code > span > span > span > span.hljs-comment {
+  color: var(--sessionbox-code-color);
+}
+
+
+.output-box {
+  margin: var(--outputbox-margin);
+}
+
+.output {
+  color: var(--outputbox-color);
+  font-family: var(--outputbox-font-family);
+  font-size: var(--outputbox-font-size);
+  background-color: var(--outputbox-background-color);
+  border: var(--outputbox-border-width) solid var(--outputbox-border-color);
+  border-radius: var(--outputbox-border-radius);
+  padding: var(--outputbox-padding);
+}
+
+div.output-box summary {
+  color: var(--outputbox-header-color);
+  font-family: var(--outputbox-header-font-family);
+  font-size: var(--outputbox-header-font-size);
+  background-color: var(--outputbox-header-background-color);
+  padding: var(--outputbox-header-padding);
+  border-radius: var(--outputbox-border-radius) var(--outputbox-border-radius) var(--outputbox-border-radius) var(--outputbox-border-radius);
+}
+
+div.output-box > div.output > details[open] > summary.output-header {
+   border-radius: var(--outputbox-border-radius) var(--outputbox-border-radius) 0px 0px;
+   background-color: var(--outputbox-header-open-background-color);
+}
+
+.output-header > i {
+  margin-left: 5px;
+}
+
+.output-details {
+  padding: var(--outputbox-body-padding);
+  margin: var(--outputbox-body-margin);
+  color: var(--outputbox-body-color);
+  background-color: var(--outputbox-body-background-color);
+  font-family: var(--outputbox-body-font-family);
+  font-size: var(--outputbox-body-font-size);
+}
+
+details > div.output-details > div.highlight > pre.chroma {
+  border-width: var(--outputbox-code-border-width);
+  border-style: var(--outputbox-code-border-style);
+  border-color: var(--outputbox-code-border-color);
+  margin: var(--outputbox-code-margin);
 }
 
 
