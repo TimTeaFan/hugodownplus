@@ -1,34 +1,66 @@
 <style>
-  :root {
-  --infobox-margin: 0px 0px 15px 0px;
-  --infobox-padding: inherit;
-  --infobox-border-color: #737373;
-  --infobox-border-width: 1px;
-  --infobox-border-radius: 0.25rem;
-  --infobox-color: inherit;
-  --infobox-background-color: inherit;
-  --infobox-font-family: inherit;
-  --infobox-font-size: 0.9rem;
+:root {
 
-  --infobox-header-color: #000000;
-  --infobox-header-padding: 2px 0px 2px 0.7em;
-  --infobox-header-background-color: rgba(219,219,219,.8);
-  --infobox-header-open-background-color: rgba(219,219,219,.8);
-  --infobox-header-font-family: inherit;
-  --infobox-header-font-size: 0.9rem;
-  --infobox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+  --wrapbox-int-margin: var(--wrapbox-margin, 0px 0px 15px 0px);
+  --wrapbox-int-padding: var(--wrapbox-padding, inherit);
+  --wrapbox-int-border-color: var(--wrapbox-border-color, #737373);
+  --wrapbox-int-border-width: var(--wrapbox-border-width, 1px);
+  --wrapbox-int-border-radius: var(--wrapbox-border-radius, 0.25rem);
+  --wrapbox-int-color: var(--wrapbox-color, inherit);
+  --wrapbox-int-background-color: var(--wrapbox-background-color, inherit);
+  --wrapbox-int-font-family: var(--wrapbox-font-family, inherit);
+  --wrapbox-int-font-size: var(--wrapbox-font-size, 0.9rem);
 
-  --infobox-body-padding: 10px 5px 10px 10px;
-  --infobox-body-margin: 0px 0px 15px 0px;
-  --infobox-body-font-family: inherit;
-  --infobox-body-font-size: 0.9rem;
-  --infobox-body-background-color: inherit;
-  --infobox-body-color: inherit;
+  --wrapbox-int-header-color: var(--wrapbox-header-color, #000000);
+  --wrapbox-int-header-padding: var(--wrapbox-header-padding, 2px 0px 2px 0.7em);
+  --wrapbox-int-header-background-color: var(--wrapbox-header-background-color, rgba(219,219,219,.8));
+  --wrapbox-int-header-open-background-color: var(--wrapbox-header-open-background-color, rgba(219,219,219,.8));
+  --wrapbox-int-header-font-family: var(--wrapbox-header-font-family, inherit);
+  --wrapbox-int-header-font-size: var(--wrapbox-header-font-size, 0.9rem);
+  --wrapbox-int-header-border-radius: var(--wrapbox-header-border-radius, 0.25rem 0.25rem 0.25rem 0.25rem);
 
-  --infobox-code-border-width: 2px;
-  --infobox-code-border-style: dotted;
-  --infobox-code-border-color: #fff;
-  --infobox-code-margin: 0px;
+  --wrapbox-int-body-padding: var(--wrapbox-body-padding, 10px 5px 10px 10px);
+  --wrapbox-int-body-margin: var(--wrapbox-body-margin, 0px 0px 15px 0px);
+  --wrapbox-int-body-font-family: var(--wrapbox-body-font-family, inherit);
+  --wrapbox-int-body-font-size: var(--wrapbox-body-font-size, 0.9rem);
+  --wrapbox-int-body-background-color: var(--wrapbox-body-background-color, inherit);
+  --wrapbox-int-body-color: var(--wrapbox-body-color, inherit);
+
+  --wrapbox-int-code-border-width: var(--wrapbox-code-border-width, 2px);
+  --wrapbox-int-code-border-style: var(--wrapbox-code-border-style, dotted);
+  --wrapbox-int-code-border-color: var(--wrapbox-code-border-color, #fff);
+  --wrapbox-int-code-margin: var(--wrapbox-code-margin, 0px);
+
+
+  --infobox-int-margin: var(--wrapbox-int-margin);
+  --infobox-int-padding: var(--wrapbox-int-padding);
+  --infobox-int-border-color: var(--wrapbox-int-border-color);
+  --infobox-int-border-width: var(--wrapbox-int-border-width);
+  --infobox-int-border-radius: var(--wrapbox-int-border-radius);
+  --infobox-int-color: var(--wrapbox-int-color);
+  --infobox-int-background-color: var(--wrapbox-int-background-color);
+  --infobox-int-font-family: var(--wrapbox-int-font-family);
+  --infobox-int-font-size: var(--wrapbox-int-font-size);
+
+  --infobox-int-header-color: var(--wrapbox-int-header-color);
+  --infobox-int-header-padding: var(--wrapbox-int-header-padding);
+  --infobox-int-header-background-color: var(--wrapbox-int-header-background-color);
+  --infobox-int-header-open-background-color: var(--wrapbox-int-header-open-background-color);
+  --infobox-int-header-font-family: var(--wrapbox-int-header-font-family);
+  --infobox-int-header-font-size: var(--wrapbox-int-header-font-size);
+  --infobox-int-header-border-radius: var(--wrapbox-int-header-border-radius);
+
+  --infobox-int-body-padding: var(--wrapbox-int-body-padding);
+  --infobox-int-body-margin:var(--wrapbox-int-body-margin);
+  --infobox-int-body-font-family: var(--wrapbox-int-body-font-family);
+  --infobox-int-body-font-size: var(--wrapbox-int-body-font-size);
+  --infobox-int-body-background-color: var(--wrapbox-int-body-background-color);
+  --infobox-int-body-color: var(--wrapbox-int-body-color);
+
+  --infobox-int-code-border-width: var(--wrapbox-int-code-border-width);
+  --infobox-int-code-border-style: var(--wrapbox-int-code-border-style);
+  --infobox-int-code-border-color: var(--wrapbox-int-code-border-color);
+  --infobox-int-code-margin: var(--wrapbox-int-code-margin);
 
 
   --warnbox-margin: 0px 0px 15px 0px;
