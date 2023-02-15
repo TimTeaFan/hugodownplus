@@ -26,134 +26,140 @@
   --wrapbox-int-body-background-color: var(--wrapbox-body-background-color, inherit);
   --wrapbox-int-body-color: var(--wrapbox-body-color, inherit);
 
-  --wrapbox-int-code-border-width: var(--wrapbox-code-border-width, 2px);
+  --wrapbox-int-code-border-width: var(--wrapbox-code-border-width, 1px);
   --wrapbox-int-code-border-style: var(--wrapbox-code-border-style, dotted);
   --wrapbox-int-code-border-color: var(--wrapbox-code-border-color, #fff);
   --wrapbox-int-code-margin: var(--wrapbox-code-margin, 0px);
 
 
-  --infobox-int-margin: var(--wrapbox-int-margin);
-  --infobox-int-padding: var(--wrapbox-int-padding);
-  --infobox-int-border-color: var(--wrapbox-int-border-color);
-  --infobox-int-border-width: var(--wrapbox-int-border-width);
-  --infobox-int-border-radius: var(--wrapbox-int-border-radius);
-  --infobox-int-color: var(--wrapbox-int-color);
-  --infobox-int-background-color: var(--wrapbox-int-background-color);
-  --infobox-int-font-family: var(--wrapbox-int-font-family);
-  --infobox-int-font-size: var(--wrapbox-int-font-size);
-
-  --infobox-int-header-color: var(--wrapbox-int-header-color);
-  --infobox-int-header-padding: var(--wrapbox-int-header-padding);
-  --infobox-int-header-background-color: var(--wrapbox-int-header-background-color);
-  --infobox-int-header-open-background-color: var(--wrapbox-int-header-open-background-color);
-  --infobox-int-header-font-family: var(--wrapbox-int-header-font-family);
-  --infobox-int-header-font-size: var(--wrapbox-int-header-font-size);
-  --infobox-int-header-border-radius: var(--wrapbox-int-header-border-radius);
-
-  --infobox-int-body-padding: var(--wrapbox-int-body-padding);
-  --infobox-int-body-margin:var(--wrapbox-int-body-margin);
-  --infobox-int-body-font-family: var(--wrapbox-int-body-font-family);
-  --infobox-int-body-font-size: var(--wrapbox-int-body-font-size);
-  --infobox-int-body-background-color: var(--wrapbox-int-body-background-color);
-  --infobox-int-body-color: var(--wrapbox-int-body-color);
-
-  --infobox-int-code-border-width: var(--wrapbox-int-code-border-width);
-  --infobox-int-code-border-style: var(--wrapbox-int-code-border-style);
-  --infobox-int-code-border-color: var(--wrapbox-int-code-border-color);
-  --infobox-int-code-margin: var(--wrapbox-int-code-margin);
 
 
-  --warnbox-margin: 0px 0px 15px 0px;
-  --warnbox-padding: inherit;
-  --warnbox-border-color: #737373;
-  --warnbox-border-width: 1px;
-  --warnbox-border-radius: 0.25rem;
-  --warnbox-color: inherit;
-  --warnbox-background-color: inherit;
-  --warnbox-font-family: inherit;
-  --warnbox-font-size: 0.9rem;
+  --infobox-int-margin: var(--infobox-margin, --wrapbox-int-margin);
+  --infobox-int-padding: var(--infobox-padding, --wrapbox-int-padding);
+  --infobox-int-border-color: var(--infobox-border-color, --wrapbox-int-border-color);
+  --infobox-int-border-width: var(--infobox-order-width, --wrapbox-int-border-width);
+  --infobox-int-border-radius: var(--infobox-border-radius, --wrapbox-int-border-radius);
+  --infobox-int-color: var(--infobox-color, --wrapbox-int-color);
+  --infobox-int-background-color: var(--infobox-background-color, --wrapbox-int-background-color);
+  --infobox-int-font-family: var(--infobox-font-family, --wrapbox-int-font-family);
+  --infobox-int-font-size: var(--infobox-font-size, --wrapbox-int-font-size);
 
-  --warnbox-header-color: #000000;
-  --warnbox-header-padding: 2px 0px 2px 0.7em;
-  --warnbox-header-background-color: rgba(219,219,219,.8);
-  --warnbox-header-open-background-color: rgba(219,219,219,.8);
-  --warnbox-header-font-family: inherit;
-  --warnbox-header-font-size: 0.9rem;
-  --warnbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+  --infobox-int-header-color: var(--infobox-header-color, --wrapbox-int-header-color);
+  --infobox-int-header-padding: var(--infobox-header-padding, --wrapbox-int-header-padding);
+  --infobox-int-header-background-color: var(--infobox-header-background-color, --wrapbox-int-header-background-color);
+  --infobox-int-header-open-background-color: var(--infobox-header-open-background-color, --wrapbox-int-header-open-background-color);
+  --infobox-int-header-font-family: var(--infobox-header-font-family, --wrapbox-int-header-font-family);
+  --infobox-int-header-font-size: var(--infobox-header-font-size, --wrapbox-int-header-font-size);
+  --infobox-int-header-border-radius: var(--infobox-header-border-radius, --wrapbox-int-header-border-radius);
 
-  --warnbox-body-padding: 10px 5px 10px 10px;
-  --warnbox-body-margin: 0px 0px 15px 0px;
-  --warnbox-body-font-family: inherit;
-  --warnbox-body-font-size: 0.9rem;
-  --warnbox-body-background-color: inherit;
-  --warnbox-body-color: inherit;
+  --infobox-int-body-padding: var(--infobox-body-padding, --wrapbox-int-body-padding);
+  --infobox-int-body-padding: var(--infobox-body-padding, --wrapbox-int-body-margin);
+  --infobox-int-body-font-family: var(--infobox-body-font-family, --wrapbox-int-body-font-family);
+  --infobox-int-body-font-size: var(--infobox-body-font-size, --wrapbox-int-body-font-size);
+  --infobox-int-body-background-color: var(--infobox-body-background-color, --wrapbox-int-body-background-color);
+  --infobox-int-body-color: var(--infobox-body-color, --wrapbox-int-body-color);
 
-  --warnbox-code-border-width: 2px;
-  --warnbox-code-border-style: dotted;
-  --warnbox-code-border-color: #fff;
-  --warnbox-code-margin: 0px;
+  --infobox-int-code-border-width: var(--infobox-code-border-width, --wrapbox-int-code-border-width);
+  --infobox-int-code-border-style: var(--infobox-code-border-style, --wrapbox-int-code-border-style);
+  --infobox-int-code-border-color: var(--infobox-code-border-color, --wrapbox-int-code-border-color);
+  --infobox-int-code-margin: var(--infobox-code-margin, --wrapbox-int-code-margin);
 
 
-  --sessionbox-margin: 15px 0px 25px 0px;
-  --sessionbox-padding: 0px;
-  --sessionbox-border-color: #737373;
-  --sessionbox-border-width: 1px;
-  --sessionbox-border-radius: 0.25rem;
-  --sessionbox-color: inherit;
-  --sessionbox-background-color: inherit;
-  --sessionbox-font-family: inherit;
-  --sessionbox-font-size: 0.9rem;
 
-  --sessionbox-header-color: #000000;
-  --sessionbox-header-padding: 2px 0px 2px 0.7em;
-  --sessionbox-header-background-color: rgba(219,219,219,.8);
-  --sessionbox-header-open-background-color: rgba(219,219,219,.8);
-  --sessionbox-header-font-family: inherit;
-  --sessionbox-header-font-size: 0.9rem;
-  --sessionbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+  --warnbox-int-margin: var(--warnbox-margin, --wrapbox-int-margin);
+  --warnbox-int-padding: var(--warnbox-padding, --wrapbox-int-padding);
+  --warnbox-int-border-color: var(--warnbox-border-color, --wrapbox-int-border-color);
+  --warnbox-int-border-width: var(--warnbox-order-width, --wrapbox-int-border-width);
+  --warnbox-int-border-radius: var(--warnbox-border-radius, --wrapbox-int-border-radius);
+  --warnbox-int-color: var(--warnbox-color, --wrapbox-int-color);
+  --warnbox-int-background-color: var(--warnbox-background-color, --wrapbox-int-background-color);
+  --warnbox-int-font-family: var(--warnbox-font-family, --wrapbox-int-font-family);
+  --warnbox-int-font-size: var(--warnbox-font-size, --wrapbox-int-font-size);
 
-  --sessionbox-body-padding: 10px 10px 0px 10px;
-  --sessionbox-body-margin:  0 0 10px 0;
-  --sessionbox-body-font-family: inherit;
-  --sessionbox-body-font-size: 0.9rem;
-  --sessionbox-body-background-color: inherit;
-  --sessionbox-body-color: inherit;
+  --warnbox-int-header-color: var(--warnbox-header-color, --wrapbox-int-header-color);
+  --warnbox-int-header-padding: var(--warnbox-header-padding, --wrapbox-int-header-padding);
+  --warnbox-int-header-background-color: var(--warnbox-header-background-color, --wrapbox-int-header-background-color);
+  --warnbox-int-header-open-background-color: var(--warnbox-header-open-background-color, --wrapbox-int-header-open-background-color);
+  --warnbox-int-header-font-family: var(--warnbox-header-font-family, --wrapbox-int-header-font-family);
+  --warnbox-int-header-font-size: var(--warnbox-header-font-size, --wrapbox-int-header-font-size);
+  --warnbox-int-header-border-radius: var(--warnbox-header-border-radius, --wrapbox-int-header-border-radius);
 
-  --sessionbox-code-border-width: 1px;
-  --sessionbox-code-border-style: dotted;
-  --sessionbox-code-border-color: #fff;
-  --sessionbox-code-margin: 0px;
-  --sessionbox-code-color: #b2b2b2;
+  --warnbox-int-body-padding: var(--warnbox-body-padding, --wrapbox-int-body-padding);
+  --warnbox-int-body-padding: var(--warnbox-body-padding, --wrapbox-int-body-margin);
+  --warnbox-int-body-font-family: var(--warnbox-body-font-family, --wrapbox-int-body-font-family);
+  --warnbox-int-body-font-size: var(--warnbox-body-font-size, --wrapbox-int-body-font-size);
+  --warnbox-int-body-background-color: var(--warnbox-body-background-color, --wrapbox-int-body-background-color);
+  --warnbox-int-body-color: var(--warnbox-body-color, --wrapbox-int-body-color);
 
-  --outputbox-margin: 0px 0px 15px 45px;
-  --outputbox-padding: inherit;
-  --outputbox-border-color: #737373;
-  --outputbox-border-width: 1px;
-  --outputbox-border-radius: 0.25rem;
-  --outputbox-color: inherit;
-  --outputbox-background-color: inherit;
-  --outputbox-font-family: inherit;
-  --outputbox-font-size: 0.9rem;
+  --warnbox-int-code-border-width: var(--warnbox-code-border-width, --wrapbox-int-code-border-width);
+  --warnbox-int-code-border-style: var(--warnbox-code-border-style, --wrapbox-int-code-border-style);
+  --warnbox-int-code-border-color: var(--warnbox-code-border-color, --wrapbox-int-code-border-color);
+  --warnbox-int-code-margin: var(--warnbox-code-margin, --wrapbox-int-code-margin);
 
-  --outputbox-header-color: #000000;
-  --outputbox-header-padding: 2px 0px 2px 0.7em;
-  --outputbox-header-background-color: rgba(219,219,219,.8);
-  --outputbox-header-open-background-color: rgba(219,219,219,.8);
-  --outputbox-header-font-family: inherit;
-  --outputbox-header-font-size: 0.9rem;
-  --outputbox-header-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
 
-  --outputbox-body-padding: initial;
-  --outputbox-body-margin: 0px 0px 15px 0px;
-  --outputbox-body-font-family: inherit;
-  --outputbox-body-font-size: 0.9rem;
-  --outputbox-body-background-color: inherit;
-  --outputbox-body-color: inherit;
+  --sessionbox-int-margin: var(--sessionbox-margin, 15px 0px 25px 0px);
+  --sessionbox-int-padding: var(--sessionbox-padding, 0px);
+  --sessionbox-int-border-color: var(--sessionbox-border-color, --wrapbox-int-border-color);
+  --sessionbox-int-border-width: var(--sessionbox-border-width, --wrapbox-int-border-width);
+  --sessionbox-int-border-radius: var(--sessionbox-border-radius, --wrapbox-int-border-radius);
+  --sessionbox-int-color: var(--sessionbox-color, --wrapbox-int-color);
+  --sessionbox-int-background-color: var(--sessionbox-background-color, --wrapbox-int-background-color);
+  --sessionbox-int-font-family: var(--sessionbox-font-family, --wrapbox-int-font-family);
+  --sessionbox-int-font-size: var(--sessionbox-font-size, --wrapbox-int-font-size);
 
-  --outputbox-code-border-width: 0px;
-  --outputbox-code-border-style: inherit;
-  --outputbox-code-border-color: inherit;
-  --outputbox-code-margin: 0px;
+  --sessionbox-int-header-color: var(--sessionbox-header-color, --wrapbox-int-header-color);
+  --sessionbox-int-header-padding: var(--sessionbox-header-padding, --wrapbox-int-header-padding);
+  --sessionbox-int-header-background-color: var(--sessionbox-header-background-color, --wrapbox-int-header-background-color));
+  --sessionbox-int-header-open-background-color: var(--sessionbox-header-open-background-color, --wrapbox-int-header-background-color);
+  --sessionbox-int-header-font-family: var(--sessionbox-header-font-family, --wrapbox-int-header-font-family);
+  --sessionbox-int-header-font-size: var(--sessionbox-header-font-size, --wrapbox-int-header-font-size);
+  --sessionbox-int-header-border-radius: var(--sessionbox-header-border-radius, --wrapbox-int-header-border-radius);
+
+  --sessionbox-int-body-padding: var(--sessionbox-body-padding, --wrapbox-int-body-padding);
+  --sessionbox-int-body-margin: var(--sessionbox-body-margin, --wrapbox-int-body-margin);
+  --sessionbox-int-body-font-family: var(--sessionbox-body-font-family, --wrapbox-int-body-font-family);
+  --sessionbox-int-body-font-size: var(--sessionbox-body-font-size, --wrapbox-int-body-font-size);
+  --sessionbox-int-body-background-color: var(--sessionbox-body-background-color, --wrapbox-int-body-background-color);
+  --sessionbox-int-body-color: var(--sessionbox-body-color, --wrapbox-int-body-color);
+
+  --sessionbox-int-code-border-width: var(--sessionbox-code-border-width, wrapbox-int-code-border-width);
+  --sessionbox-int-code-border-style: var(--sessionbox-code-border-style, wrapbox-int-code-border-style);
+  --sessionbox-int-code-border-color: var(--sessionbox-code-border-color, wrapbox-int-code-border-color);
+  --sessionbox-int-code-margin: var(--sessionbox-code-margin, wrapbox-int-code-margin);
+  --sessionbox-int-code-color: var(--sessionbox-code-color, #b2b2b2);
+
+
+
+
+  --outputbox-int-margin: var(--outputbox-margin, 0px 0px 15px 45px);
+  --outputbox-int-padding: var(--outputbox-padding, --wrapbox-int-padding);
+  --outputbox-int-border-color: var(--outputbox-border-color, --wrapbox-int-border-color);
+  --outputbox-int-border-width: var(--outputbox-border-width, --wrapbox-int-border-width);
+  --outputbox-int-border-radius: var(--outputbox-border-radius, --wrapbox-int-border-radius);
+  --outputbox-int-color: var(--outputbox-color, --wrapbox-int-color);
+  --outputbox-int-background-color: var(--outputbox-background-color, --wrapbox-int-background-color);
+  --outputbox-int-font-family: var(--outputbox-font-family, --wrapbox-int-font-famil);
+  --outputbox-int-font-size: var(--outputbox-font-size, --wrapbox-int-font-size);
+
+  --outputbox-int-header-color: var(--outputbox-header-color, --wrapbox-int-header-color);
+  --outputbox-int-header-padding: var(--outputbox-header-padding, --wrapbox-int-header-padding);
+  --outputbox-int-header-background-color: var(--outputbox-header-background-color, --wrapbox-int-header-background-color);
+  --outputbox-int-header-open-background-color: var(--outputbox-header-background-color, --wrapbox-int-header-background-color);
+  --outputbox-int-header-font-family: var(--outputbox-header-font-family, --wrapbox-int-header-font-family);
+  --outputbox-int-header-font-size: var(--outputbox-header-font-size, --wrapbox-int-header-font-size);
+  --outputbox-int-header-border-radius: var(--outputbox-header-border-radius, --wrapbox-int-header-border-radius);
+
+  --outputbox-int-body-padding: var(--outputbox-body-padding, --wrapbox-int-body-padding);
+  --outputbox-int-body-margin: var(--outputbox-body-margin, --wrapbox-int-body-margin);
+  --outputbox-int-body-font-family: var(--outputbox-body-font-family, --wrapbox-int-body-font-family);
+  --outputbox-int-body-font-size: var(--outputbox-body-font-size, --wrapbox-int-body-font-size);
+  --outputbox-int-body-background-color: var(--outputbox-body-background-color, --wrapbox-int-body-background-color);
+  --outputbox-int-body-color: var(--outputbox-body-color, --wrapbox-int-body-color);
+
+  --outputbox-int-code-border-width: var(--outputbox-code-border-width, 0px);
+  --outputbox-int-code-border-style: var(--outputbox-code-border-style, inherit);
+  --outputbox-int-code-border-color: var(--outputbox-code-border-color, inherit);
+  --outputbox-int-code-margin: var(--outputbox-code-margin, 0px);
 
 }
 
@@ -207,31 +213,31 @@ details > div.note-details > div.highlight > pre.chroma {
 
 
 .warn-box {
-  margin: var(--warnbox-margin);
+  margin: var(--warnbox-int-margin);
 }
 
 .warn {
-  color: var(--warnbox-color);
-  font-family: var(--warnbox-font-family);
-  font-size: var(--warnbox-font-size);
-  background-color: var(--warnbox-background-color);
-  border: var(--warnbox-border-width) solid var(--warnbox-border-color);
-  border-radius: var(--warnbox-border-radius);
-  padding: var(--warnbox-padding);
+  color: var(--warnbox-int-color);
+  font-family: var(--warnbox-int-font-family);
+  font-size: var(--warnbox-int-font-size);
+  background-color: var(--warnbox-int-background-color);
+  border: var(--warnbox-int-border-width) solid var(--warnbox-int-border-color);
+  border-radius: var(--warnbox-int-border-radius);
+  padding: var(--warnbox-int-padding);
 }
 
 div.warn-box summary {
-  color: var(--warnbox-header-color);
-  font-family: var(--warnbox-header-font-family);
-  font-size: var(--warnbox-header-font-size);
-  background-color: var(--warnbox-header-background-color);
-  padding: var(--warnbox-header-padding);
-  border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius) var(--warnbox-border-radius);
+  color: var(--warnbox-int-header-color);
+  font-family: var(--warnbox-int-header-font-family);
+  font-size: var(--warnbox-int-header-font-size);
+  background-color: var(--warnbox-int-header-background-color);
+  padding: var(--warnbox-int-header-padding);
+  border-radius: var(--warnbox-int-border-radius) var(--warnbox-int-border-radius) var(--warnbox-int-border-radius) var(--warnbox-int-border-radius);
 }
 
 div.warn-box > div.warn > details[open] > summary.warn-header {
-   border-radius: var(--warnbox-border-radius) var(--warnbox-border-radius) 0px 0px;
-   background-color: var(--warnbox-header-open-background-color);
+   border-radius: var(--warnbox-int-border-radius) var(--warnbox-int-border-radius) 0px 0px;
+   background-color: var(--warnbox-int-header-open-background-color);
 }
 
 .warn-header > i {
@@ -239,45 +245,45 @@ div.warn-box > div.warn > details[open] > summary.warn-header {
 }
 
 .warn-details {
-  padding: var(--warnbox-body-padding);
-  margin: var(--warnbox-body-margin);
-  color: var(--warnbox-body-color);
-  background-color: var(--warnbox-body-background-color);
-  font-family: var(--warnbox-body-font-family);
-  font-size: var(--warnbox-body-font-size);
+  padding: var(--warnbox-int-body-padding);
+  margin: var(--warnbox-int-body-margin);
+  color: var(--warnbox-int-body-color);
+  background-color: var(--warnbox-int-body-background-color);
+  font-family: var(--warnbox-int-body-font-family);
+  font-size: var(--warnbox-int-body-font-size);
 }
 
 details > div.warn-details > div.highlight > pre.chroma {
-  border-width: var(--warnbox-code-border-width);
-  border-style: var(--warnbox-code-border-style);
-  border-color: var(--warnbox-code-border-color);
-  margin: var(--warnbox-code-margin);
+  border-width: var(--warnbox-int-code-border-width);
+  border-style: var(--warnbox-int-code-border-style);
+  border-color: var(--warnbox-int-code-border-color);
+  margin: var(--warnbox-int-code-margin);
 }
 
 
 
 .session {
-  color: var(--sessionbox-color);
-  font-family: var(--sessionbox-font-family);
-  font-size: var(--sessionbox-font-size);
-  background-color: var(--sessionbox-background-color);
-  border: var(--sessionbox-border-width) solid var(--sessionbox-border-color);
-  border-radius: var(--sessionbox-border-radius);
-  padding: var(--sessionbox-padding);
+  color: var(--sessionbox-int-color);
+  font-family: var(--sessionbox-int-font-family);
+  font-size: var(--sessionbox-int-font-size);
+  background-color: var(--sessionbox-int-background-color);
+  border: var(--sessionbox-int-border-width) solid var(--sessionbox-int-border-color);
+  border-radius: var(--sessionbox-int-border-radius);
+  padding: var(--sessionbox-int-padding);
 }
 
 div.session summary {
-  color: var(--sessionbox-header-color);
-  font-family: var(--sessionbox-header-font-family);
-  font-size: var(--sessionbox-header-font-size);
-  background-color: var(--sessionbox-header-background-color);
-  padding: var(--sessionbox-header-padding);
-  border-radius: var(--sessionbox-border-radius) var(--sessionbox-border-radius) var(--sessionbox-border-radius) var(--sessionbox-border-radius);
+  color: var(--sessionbox-int-header-color);
+  font-family: var(--sessionbox-int-header-font-family);
+  font-size: var(--sessionbox-int-header-font-size);
+  background-color: var(--sessionbox-int-header-background-color);
+  padding: var(--sessionbox-int-header-padding);
+  border-radius: var(--sessionbox-int-border-radius) var(--sessionbox-int-border-radius) var(--sessionbox-int-border-radius) var(--sessionbox-int-border-radius);
 }
 
 div.session > details[open].sess > summary.session-header {
-  border-radius: var(--sessionbox-border-radius) var(--sessionbox-border-radius) 0px 0px;
-  background-color: var(--sessionbox-header-open-background-color);
+  border-radius: var(--sessionbox-int-border-radius) var(--sessionbox-int-border-radius) 0px 0px;
+  background-color: var(--sessionbox-int-header-open-background-color);
 }
 
 .session-header > i {
@@ -285,54 +291,54 @@ div.session > details[open].sess > summary.session-header {
 }
 
 .session-details {
-  padding: var(--sessionbox-body-padding);
-  margin: var(--sessionbox-body-margin);
-  color: var(--sessionbox-body-color);
-  background-color: var(--sessionbox-body-background-color);
-  font-family: var(--sessionbox-body-font-family);
-  font-size: var(--sessionbox-body-font-size);
+  padding: var(--sessionbox-int-body-padding);
+  margin: var(--sessionbox-int-body-margin);
+  color: var(--sessionbox-int-body-color);
+  background-color: var(--sessionbox-int-body-background-color);
+  font-family: var(--sessionbox-int-body-font-family);
+  font-size: var(--sessionbox-int-body-font-size);
 }
 
 details.sess > div.highlight > pre.chroma {
-  border-width: var(--sessionbox-code-border-width);
-  border-style: var(--sessionbox-code-border-style);
-  border-color: var(--sessionbox-code-border-color);
-  margin: var(--sessionbox-code-margin);
+  border-width: var(--sessionbox-int-code-border-width);
+  border-style: var(--sessionbox-int-code-border-style);
+  border-color: var(--sessionbox-int-code-border-color);
+  margin: var(--sessionbox-int-code-margin);
   border: initial;
 }
 
 details.sess > div > pre > code > span > span > span.hljs-comment,
 details.sess > div > pre > code > span > span > span > span.hljs-comment {
-  color: var(--sessionbox-code-color);
+  color: var(--sessionbox-int-code-color);
 }
 
 
 .output-box {
-  margin: var(--outputbox-margin);
+  margin: var(--outputbox-int-margin);
 }
 
 .output {
-  color: var(--outputbox-color);
-  font-family: var(--outputbox-font-family);
-  font-size: var(--outputbox-font-size);
-  background-color: var(--outputbox-background-color);
-  border: var(--outputbox-border-width) solid var(--outputbox-border-color);
-  border-radius: var(--outputbox-border-radius);
-  padding: var(--outputbox-padding);
+  color: var(--outputbox-int-color);
+  font-family: var(--outputbox-int-font-family);
+  font-size: var(--outputbox-int-font-size);
+  background-color: var(--outputbox-int-background-color);
+  border: var(--outputbox-int-border-width) solid var(--outputbox-int-border-color);
+  border-radius: var(--outputbox-int-border-radius);
+  padding: var(--outputbox-int-padding);
 }
 
 div.output-box summary {
-  color: var(--outputbox-header-color);
-  font-family: var(--outputbox-header-font-family);
-  font-size: var(--outputbox-header-font-size);
-  background-color: var(--outputbox-header-background-color);
-  padding: var(--outputbox-header-padding);
-  border-radius: var(--outputbox-border-radius) var(--outputbox-border-radius) var(--outputbox-border-radius) var(--outputbox-border-radius);
+  color: var(--outputbox-int-header-color);
+  font-family: var(--outputbox-int-header-font-family);
+  font-size: var(--outputbox-int-header-font-size);
+  background-color: var(--outputbox-int-header-background-color);
+  padding: var(--outputbox-int-header-padding);
+  border-radius: var(--outputbox-int-border-radius) var(--outputbox-int-border-radius) var(--outputbox-int-border-radius) var(--outputbox-int-border-radius);
 }
 
 div.output-box > div.output > details[open] > summary.output-header {
-   border-radius: var(--outputbox-border-radius) var(--outputbox-border-radius) 0px 0px;
-   background-color: var(--outputbox-header-open-background-color);
+   border-radius: var(--outputbox-int-border-radius) var(--outputbox-int-border-radius) 0px 0px;
+   background-color: var(--outputbox-int-header-open-background-color);
 }
 
 .output-header > i {
@@ -340,19 +346,19 @@ div.output-box > div.output > details[open] > summary.output-header {
 }
 
 .output-details {
-  padding: var(--outputbox-body-padding);
-  margin: var(--outputbox-body-margin);
-  color: var(--outputbox-body-color);
-  background-color: var(--outputbox-body-background-color);
-  font-family: var(--outputbox-body-font-family);
-  font-size: var(--outputbox-body-font-size);
+  padding: var(--outputbox-int-body-padding);
+  margin: var(--outputbox-int-body-margin);
+  color: var(--outputbox-int-body-color);
+  background-color: var(--outputbox-int-body-background-color);
+  font-family: var(--outputbox-int-body-font-family);
+  font-size: var(--outputbox-int-body-font-size);
 }
 
 details > div.output-details > div.highlight > pre.chroma {
-  border-width: var(--outputbox-code-border-width);
-  border-style: var(--outputbox-code-border-style);
-  border-color: var(--outputbox-code-border-color);
-  margin: var(--outputbox-code-margin);
+  border-width: var(--outputbox-int-code-border-width);
+  border-style: var(--outputbox-int-code-border-style);
+  border-color: var(--outputbox-int-code-border-color);
+  margin: var(--outputbox-int-code-margin);
 }
 
 
