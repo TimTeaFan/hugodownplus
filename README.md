@@ -95,11 +95,11 @@ As mentioned above, we can create an expandable box containing the
 current session info by using the `child_session_info()` function as
 inline R code in an Rmd file.
 
-``` r
-cat("`r child_session_info()`")
-```
+    `r child_session_info()`
 
-For me information on how to style the HTML boxes see the vignette .
+For me information on how to style the HTML boxes see the vignette
+<a href="https://timteafan.github.io/hugodownplus/articles/customize-boxes.html">“Customize
+Expandable HMTL Boxes”</a>.
 
 ## History & Idea
 

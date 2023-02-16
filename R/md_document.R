@@ -31,7 +31,7 @@
 #'
 #' @section Reference:
 #' For examples of how to include expandable boxes when the `use_boxes` argument is set to `TRUE`
-#' refer to the documentation in the [README](README.me) file.
+#' refer to the \href{../doc/customize-boxes.html}{\code{vignette("customize-boxes", package = "hugodownplus")}}
 #'
 #' @export
 md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.618,

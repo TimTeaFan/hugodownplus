@@ -1,5 +1,5 @@
 ---
-title: "Customizing expandable HTML boxes"
+title: "Customizing Expandable HTML Boxes"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{customize-boxes}

@@ -66,6 +66,6 @@ hugo.
 \section{Reference}{
 
 For examples of how to include expandable boxes when the \code{use_boxes} argument is set to \code{TRUE}
-refer to the documentation in the \href{README.me}{README} file.
+refer to the \href{../doc/customize-boxes.html}{\code{vignette("customize-boxes", package = "hugodownplus")}}
 }
 
