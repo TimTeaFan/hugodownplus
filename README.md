@@ -65,20 +65,29 @@ Let’s elaborate on both options a little.
 The idea is that, in a blog post on topic X, we might want to talk a bit
 more about details of a related concept Y. This might not be interesting
 for every reader, so we can put this part in an expandable box, and
-those interested, can dive in further.
+those interested, can dive in further.Similarly, we can create warn
+boxes, which draw the attention to one specific issue not every reader
+might be interested in. Finally output boxes can be used to show the
+output of a code chunk, only if the reader wants to see it.
 
 To generate an info, warn or output box we just wrap text and/ or code
-(or a child document) into a fenced (pandoc) div using three colons
-`:::` before and after the part that we want to put into a box:
+(or a child document) into a fenced (pandoc) div using three colons :::
+before and after the part that we want to put into a box:
 
     ::: {.info-box title="Title of my info box"}
-    ```{r, child="path_to_child_document.Rmd"}
+
+    Here goes some text.
+
+    ```{r}
+    # Here is a code comment and below some code
+    x <- 1 + 1
     ```
+
     :::
 
 All we have to do is to specify either `{.info-box}`, `{.warn-box}` or
-`{.output-box}` and a `title` which should be shown in the header of the
-box.
+`{.output-box}` and a `title` inside the div fence `:::`. The `title`
+will be shown in the header of the box.
 
 Below is a full example:
 
@@ -96,50 +105,75 @@ Below is a full example:
     Some text
 
     ::: {.info-box title="Title of my info box"}
-    ```{r, child="path_to_child_document.Rmd"}
+
+    Here goes some text.
+
+    ```{r}
+    # Here is a code comment and below some code
+    x <- 1 + 1
     ```
+
     :::
 
-This alone will just render an expandable box using the `<details>` and
-`<summary>` HTML tags. All the formatting that we may want to apply has
-to happen in CSS. The following classes can be used for the info-box:
+This alone will just render a “naked” expandable box using the
+`<details>` and `<summary>` HTML tags:
+
+<div class="info-box" title="Title of my info box">
+
+<div class="note" markdown="1">
+
+<details class="open">
+<summary class="note-header">
+Title of my info box <i class="fas fa-tools"></i>
+</summary>
+
+<div class="note-details">
+
+<p>
+Here goes some text
+</p>
+
+``` r
+# Here is a code comment and below some code
+1 + 1
+[1] 2
+```
+
+</div>
+
+</details>
+
+</div>
+
+<br> All the formatting that we may want to apply has to happen in CSS.
+The following classes can be used for the three main parts of each box
+(info, warn and output):
 
 ``` css
-.note {
+.note, .warn, .output {
   /* customize the whole box */
 }
 
 summary.note-header,
-.note-header {
-  /* customize the box header */
-}
-
-.note-details {
-  /* customize the content of the box */
-}
-```
-
-Note that the class inside the fenced (pandoc) div `:::` is called
-`.info-box`, but the CSS classes are called `.note`. This is because
-`info` is a very common class which is why the CSS selectors take
-`.note` as class instead.
-
-Similarly, the CSS selectors for the warn box look like this:
-
-``` css
-.warn {
-  /* customize the whole box */
-}
-
 summary.warn-header,
-.warn-header {
+summary.output-header {
   /* customize the box header */
 }
 
-.warn-details {
+.note-details,
+.warn-details,
+.output-details {
   /* customize the content of the box */
 }
 ```
+
+Note that the class for info box inside the fenced (pandoc) div `:::` is
+called `.info-box`, but the CSS classes are called `.note`. This is
+because `info` is a very common class which is why the CSS selectors
+take `.note` as class instead.
+
+If you are running a Hugo website you can just add the CSS classes and
+your prefered style to your custom.css file.
 
 #### child info session
 
@@ -160,7 +194,47 @@ Below is an example:
 
     Some text
 
-    `r child_info_session()`
+    `r child_session_info()`
+
+Which will render a “naked” expandable box containing the session info:
+
+<div class="session" markdown="1">
+
+<details class="sess">
+<summary class="session-header">
+Session Info <i class="fas fa-tools"></i>
+</summary>
+
+    ─ Session info ───────────────────────────────────────────────────────────────
+     setting  value
+     version  R version 4.2.1 (2022-06-23)
+     os       macOS Big Sur ... 10.16
+     system   x86_64, darwin17.0
+     ui       X11
+     language (EN)
+     collate  en_US.UTF-8
+     ctype    en_US.UTF-8
+     tz       Europe/Berlin
+     date     2023-02-16
+     pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
+
+    ─ Packages ───────────────────────────────────────────────────────────────────
+     package  * version    date (UTC) lib source
+     hugodown * 0.0.0.9000 2023-02-13 [1] Github (r-lib/hugodown@f6f23dd)
+
+     [1] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
+
+    ──────────────────────────────────────────────────────────────────────────────
+
+</details>
+
+</div>
+
+<br>
+
+Here too the styling has to happen via CSS. We can use the same classes
+as for the other boxes by just interchanging the class name `.note` for
+`.session`.
 
 ## History & Idea
 

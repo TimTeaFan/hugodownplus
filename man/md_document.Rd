@@ -26,7 +26,7 @@ md_document(
 
 \item{fig_asp}{Figure aspect ratio, defaults to the golden ratio.}
 
-\item{use_boxes}{TRUE to allow the use of info, warn and session boxes. If TRUE \code{includes} must not contain additional parameters.}
+\item{use_boxes}{TRUE to allow the use of info, warn, and output boxes.}
 
 \item{fig_retina}{Scaling to perform for retina displays. Defaults to
 \code{NULL} which performs no scaling. A setting of 2 will work for all
