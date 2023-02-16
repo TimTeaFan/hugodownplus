@@ -23,7 +23,7 @@
 #' @param toc_depth	Depth of headers to include in table of contents
 #' @param fig_width Figure width (in inches).
 #' @param fig_asp Figure aspect ratio, defaults to the golden ratio.
-#' @param use_boxes TRUE to allow the use of info, warn, output and session boxes. If TRUE `includes` must not contain additional parameters.
+#' @param use_boxes TRUE to allow the use of info, warn, and output boxes.
 #' @param tidyverse_style Use tidyverse knitr conventions? This sets
 #' @param standalone Set to TRUE to include title, date and other metadata field in addition to Rmd content as a body.
 #' @param includes Named list of additional content to include within the document (typically created using the includes function).
@@ -38,8 +38,11 @@ md_document <- function (toc = FALSE, toc_depth = 3, fig_width = 7, fig_asp = 0.
                          use_boxes = FALSE, fig_retina = 2, tidyverse_style = TRUE,
                          standalone = FALSE, includes = NULL, pandoc_args = NULL) {
 
+  wrap_box_file_path <- NULL
 
-  wrap_box_file_path <- fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus")
+  if (use_boxes) {
+    wrap_box_file_path <- fs::path_package("exthtml/wrap_info_box.html", package = "hugodownplus")
+  }
 
   knitr <- rmarkdown::knitr_options_html(fig_height = NULL,
                                          fig_width = fig_width,
