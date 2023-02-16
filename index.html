@@ -131,13 +131,19 @@
 <div class="section level4">
 <h4 id="info-warn-and-output-boxes">Info, warn and output boxes<a class="anchor" aria-label="anchor" href="#info-warn-and-output-boxes"></a>
 </h4>
-<p><code><a href="reference/md_document.html">hugodownplus::md_document()</a></code> can generate info, warn and output boxes. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.</p>
-<p>To generate an info, warn or output box we just wrap text and/ or code (or a child document) into a fenced (pandoc) div using three colons <code>:::</code> before and after the part that we want to put into a box:</p>
+<p><code><a href="reference/md_document.html">hugodownplus::md_document()</a></code> can generate info, warn and output boxes. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.Similarly, we can create warn boxes, which draw the attention to one specific issue not every reader might be interested in. Finally output boxes can be used to show the output of a code chunk, only if the reader wants to see it.</p>
+<p>To generate an info, warn or output box we just wrap text and/ or code (or a child document) into a fenced (pandoc) div using three colons ::: before and after the part that we want to put into a box:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.info<span class="sc">-</span>box title<span class="ot">=</span><span class="st">"Title of my info box"</span>}</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r, child="path_to_child_document.Rmd"}</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code></pre></div>
-<p>All we have to do is to specify either <code>{.info-box}</code>, <code>{.warn-box}</code> or <code>{.output-box}</code> and a <code>title</code> which should be shown in the header of the box.</p>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Here goes some text.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at"># Here is a code comment and below some code</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">x &lt;- 1 + 1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code></pre></div>
+<p>All we have to do is to specify either <code>{.info-box}</code>, <code>{.warn-box}</code> or <code>{.output-box}</code> and a <code>title</code> inside the div fence <code>:::</code>. The <code>title</code> will be shown in the header of the box.</p>
 <p>Below is a full example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span></span>
@@ -153,36 +159,49 @@
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Some text</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.info<span class="sc">-</span>box title<span class="ot">=</span><span class="st">"Title of my info box"</span>}</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r, child="path_to_child_document.Rmd"}</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code></pre></div>
-<p>This alone will just render an expandable box using the <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> HTML tags. All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the info-box:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the whole box */</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.note-header</span><span class="op">,</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-header</span> {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the box header */</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-details</span> {</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Note that the class inside the fenced (pandoc) div <code>:::</code> is called <code>.info-box</code>, but the CSS classes are called <code>.note</code>. This is because <code>info</code> is a very common class which is why the CSS selectors take <code>.note</code> as class instead.</p>
-<p>Similarly, the CSS selectors for the warn box look like this:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn</span> {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>Here goes some text.</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="at"># Here is a code comment and below some code</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="at">x &lt;- 1 + 1</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code></pre></div>
+<p>This alone will just render a “naked” expandable box using the <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> HTML tags:</p>
+<div class="info-box" title="Title of my info box">
+
+<div class="note" markdown="1">
+<details class="open"><summary class="note-header">
+Title of my info box <i class="fas fa-tools"></i>
+</summary><div class="note-details">
+<p>
+Here goes some text
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is a code comment and below some code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">2</span></span></code></pre></div>
+</div>
+</details>
+</div>
+<p><br> All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the three main parts of each box (info, warn and output):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span><span class="op">,</span> <span class="fu">.warn</span><span class="op">,</span> <span class="fu">.output</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the whole box */</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.warn-header</span><span class="op">,</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn-header</span> {</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the box header */</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn-details</span> {</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.note-header</span><span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.warn-header</span><span class="op">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.output-header</span> {</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the box header */</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-details</span><span class="op">,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn-details</span><span class="op">,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.output-details</span> {</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Note that the class for info box inside the fenced (pandoc) div <code>:::</code> is called <code>.info-box</code>, but the CSS classes are called <code>.note</code>. This is because <code>info</code> is a very common class which is why the CSS selectors take <code>.note</code> as class instead.</p>
+<p>If you are running a Hugo website you can just add the CSS classes and your prefered style to your custom.css file.</p>
 </div>
 <div class="section level4">
 <h4 id="child-info-session">child info session<a class="anchor" aria-label="anchor" href="#child-info-session"></a>
@@ -200,7 +219,35 @@
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Some text</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">r child_info_session()</span><span class="st">`</span></span></code></pre></div>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">r child_session_info()</span><span class="st">`</span></span></code></pre></div>
+<p>Which will render a “naked” expandable box containing the session info:</p>
+<div class="session" markdown="1">
+<details class="sess"><summary class="session-header">
+Session Info <i class="fas fa-tools"></i>
+</summary><div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>─ Session info ───────────────────────────────────────────────────────────────</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> setting  value</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> version  R version <span class="dv">4</span>.<span class="fl">2.1</span> (<span class="dv">2022-06-23</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> os       macOS Big Sur ... <span class="fl">10.16</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> system   x86_64, darwin17<span class="fl">.0</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> ui       X11</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">language</span> (EN)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> collate  en_US.UTF<span class="dv">-8</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> ctype    en_US.UTF<span class="dv">-8</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> tz       Europe<span class="sc">/</span>Berlin</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> date     <span class="dv">2023-02-16</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> pandoc   <span class="dv">2</span>.<span class="fl">19.2</span> <span class="sc">@</span> <span class="er">/</span>Applications<span class="sc">/</span>RStudio.app<span class="sc">/</span>Contents<span class="sc">/</span>MacOS<span class="sc">/</span>quarto<span class="sc">/</span>bin<span class="sc">/</span>tools<span class="sc">/</span> (via rmarkdown)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>─ Packages ───────────────────────────────────────────────────────────────────</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a> package  <span class="sc">*</span> version    <span class="fu">date</span> (UTC) lib source</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a> hugodown <span class="sc">*</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span> <span class="dv">2023-02-13</span> [<span class="dv">1</span>] <span class="fu">Github</span> (r<span class="sc">-</span>lib<span class="sc">/</span>hugodown<span class="sc">@</span>f6f23dd)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.2</span><span class="sc">/</span>Resources<span class="sc">/</span>library</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>──────────────────────────────────────────────────────────────────────────────</span></code></pre></div>
+</details>
+</div>
+<p><br></p>
+<p>Here too the styling has to happen via CSS. We can use the same classes as for the other boxes by just interchanging the class name <code>.note</code> for <code>.session</code>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -221,6 +268,7 @@
 <li><p>This package doesn’t come with any official tests 😱. Nevertheless, I’m using it to create blog posts on my website, and so far I haven’t encountered any issues - which is of course no guarantee that you won’t. If you run into one, I’d be happy if you file an issue <a href="https://github.com/TimTeaFan/hugodownplus/issues" class="external-link">here</a>.</p></li>
 <li><p>This package more or less contradicts the original philosophy of the {hugodown} package, which was designed to yield a streamlined, highly minimal HTML output. I do like {hugodown} very much, and think extending it is the better way (for me) compared to switching to a different package like {blogdown}.</p></li>
 </ol>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
