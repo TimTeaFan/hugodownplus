@@ -21,3 +21,40 @@ library(hugodownplus)
 # Heading
 
 Text goes here
+
+
+This alone will just render an expandable box using the `<details>` and `<summary>` HTML tags. All the formatting that we may want to apply has to happen in CSS.es can be used for the info-box:
+
+```{css, eval = FALSE}
+.note {
+  /* customize the whole box */
+}
+
+summary.note-header,
+.note-header {
+  /* customize the box header */
+}
+
+.note-details {
+  /* customize the content of the box */
+}
+```
+
+Note that the class inside the fenced (pandoc) div `:::` is called `.info-box`, but the CSS classes are called `.note`. This is because `info` is a very common class which is why the CSS selectors take `.note` as class instead.
+
+Similarly, the CSS selectors for the warn box look like this:
+
+```{css, eval = FALSE}
+.warn {
+  /* customize the whole box */
+}
+
+summary.warn-header,
+.warn-header {
+  /* customize the box header */
+}
+
+.warn-details {
+  /* customize the content of the box */
+}
+```
