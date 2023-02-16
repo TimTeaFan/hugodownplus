@@ -158,39 +158,39 @@ code (or a child document) into a fenced (pandoc) div using three colons
 <p>This alone will just render a “naked” expandable box using the
 <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> HTML
 tags:</p>
-<div class="info-box" title="Title of my info box">
-<div class="note" markdown="1">
-<details class="open"><summary class="note-header">
-Title of my info box <i class="fas fa-tools"></i>
-</summary><div class="note-details">
-<p>
-Here goes some text
-</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Here is a code comment and below some code</span></span>
-<span><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
-</div>
-</details>
-</div>
-<p><br> All the formatting that we may want to apply has to happen in
-CSS. The following classes can be used for the three main parts of each
-box (info, warn and output):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span><span class="op">,</span> <span class="fu">.warn</span><span class="op">,</span> <span class="fu">.output</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the whole box */</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.note-header</span><span class="op">,</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.warn-header</span><span class="op">,</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.output-header</span> {</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the box header */</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-details</span><span class="op">,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn-details</span><span class="op">,</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.output-details</span> {</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<!-- <div class="info-box" title="Title of my info box"> -->
+<!-- <div class="note" markdown="1"> -->
+<!-- <details class="open"> -->
+<!--   <summary class="note-header" markdown="1"> -->
+<!--   Title of my info box <i class="fas fa-tools"></i> -->
+<!--   </summary> -->
+<!--   <div class="note-details"> -->
+<!--   <p>Here goes some text</p> -->
+<!-- ```{r} -->
+<!-- # Here is a code comment and below some code -->
+<!-- 1 + 1 -->
+<!-- ``` -->
+<!--   </div></details> -->
+<!-- </div> -->
+<!-- <br> -->
+<p>All the formatting that we may want to apply has to happen in CSS.
+The following classes can be used for the three main parts of each box
+(info, warn and output):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span><span class="op">,</span> <span class="fu">.warn</span><span class="op">,</span> <span class="fu">.output</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the whole box */</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.note-header</span><span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.warn-header</span><span class="op">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>summary<span class="fu">.output-header</span> {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the box header */</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.note-details</span><span class="op">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">.warn-details</span><span class="op">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.output-details</span> {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* customize the content of the box */</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Note that the class for info box inside the fenced (pandoc) div
 <code>:::</code> is called <code>.info-box</code>, but the CSS classes
 are called <code>.note</code>. This is because <code>info</code> is a
@@ -220,39 +220,23 @@ function as inline R code in an Rmd file.</p>
 <span><span class="co">#&gt; `r child_session_info()`</span></span></code></pre>
 <p>Which will render a “naked” expandable box containing the session
 info:</p>
-<div class="session" markdown="1">
-<details class="sess"><summary class="session-header">
-Session Info <i class="fas fa-tools"></i>
-</summary><pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R version 4.2.2 (2022-10-31)</span></span>
-<span><span class="co">#&gt;  os       Ubuntu 22.04.1 LTS</span></span>
-<span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
-<span><span class="co">#&gt;  ui       X11</span></span>
-<span><span class="co">#&gt;  language en</span></span>
-<span><span class="co">#&gt;  collate  C.UTF-8</span></span>
-<span><span class="co">#&gt;  ctype    C.UTF-8</span></span>
-<span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2023-02-16</span></span>
-<span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/bin/ (via rmarkdown)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package     </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version   </span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
-<span><span class="co">#&gt;  hugodownplus * <span style="color: #BB00BB; font-weight: bold;">0.0.0.9000</span> <span style="color: #555555;">2023-02-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [1] /home/runner/work/_temp/Library</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [2] /opt/R/4.2.2/lib/R/site-library</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [3] /opt/R/4.2.2/lib/R/library</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
-</details>
-</div>
-<p><br></p>
+<!-- <div class="session" markdown="1"> -->
+<!-- <details class="sess"> -->
+<!--   <summary class="session-header" markdown="1"> -->
+<!--   Session Info <i class="fas fa-tools"></i> -->
+<!--   </summary> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- library(hugodownplus) -->
+<!-- sessioninfo::session_info(pkgs = "attached") -->
+<!-- ``` -->
+<!--   </details> -->
+<!-- </div> -->
+<!-- <br> -->
 <p>Here too the styling has to happen via CSS. We can use the same
 classes as for the other boxes by just interchanging the class name
 <code>.note</code> for <code>.session</code>.</p>
 </div>
-  <aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -268,13 +252,12 @@ classes as for the other boxes by just interchanging the class name
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
-    </footer></main>
+    </footer>
 </div>
 
   
 
   
 
-  </div>
-</body>
+  </body>
 </html>
