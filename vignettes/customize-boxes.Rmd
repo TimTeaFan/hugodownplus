@@ -117,20 +117,20 @@ Some text
 ')
 ```
 
-Which will render a "naked" expandable box containing the session info:
+<!-- Which will render a "naked" expandable box containing the session info: -->
 
-<div class="session" markdown="1">
-<details class="sess">
-  <summary class="session-header" markdown="1">
-  Session Info <i class="fas fa-tools"></i>
-  </summary>
-```{r, echo = FALSE}
-library(hugodownplus)
-sessioninfo::session_info(pkgs = "attached")
-```
-  </details>
-</div>
+<!-- <div class="session" markdown="1"> -->
+<!-- <details class="sess"> -->
+<!--   <summary class="session-header" markdown="1"> -->
+<!--   Session Info <i class="fas fa-tools"></i> -->
+<!--   </summary> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- library(hugodownplus) -->
+<!-- sessioninfo::session_info(pkgs = "attached") -->
+<!-- ``` -->
+<!--   </details> -->
+<!-- </div> -->
 
-<br>
+<!-- <br> -->
 
 Here too the styling has to happen via CSS. We can use the same classes as for the other boxes by just interchanging the class name `.note` for `.session`.
