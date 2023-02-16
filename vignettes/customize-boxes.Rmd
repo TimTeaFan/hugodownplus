@@ -1,0 +1,136 @@
+---
+title: "Customizing expandable HTML boxes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{customize-boxes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The are two ways of using expandable HTML boxes with {hugodownplus}. One is wrapping text and or code (or a child Rmd document) into a fenced (pandoc) div with `:::`. The content will be rendered into an info, warn or output box. The other way is to call `child_session_info()` as inline R code to generate an expandable box containing the session info.
+
+Let's elaborate on both options.
+
+## Info, warn and output boxes
+
+`hugodownplus::md_document()` can generate info, warn and output boxes. The idea is that, in a blog post on topic X, we might want to talk a bit more about details of a related concept Y. This might not be interesting for every reader, so we can put this part in an expandable box, and those interested, can dive in further.Similarly, we can create warn boxes, which draw the attention to one specific issue not every reader might be interested in. Finally output boxes can be used to show the output of a code chunk, only if the reader wants to see it.
+
+To generate an info, warn or output box we just wrap text and/ or code (or a child document) into a fenced (pandoc) div using three colons ::: before and after the part that we want to put into a box:
+
+```{R, echo = FALSE}
+cat('::: {.info-box title="Title of my info box"}\n\nHere goes some text.\n
+```{r}\n# Here is a code comment and below some code\nx <- 1 + 1\n```\n
+:::')
+```
+
+All we have to do is to specify either `{.info-box}`, `{.warn-box}` or `{.output-box}` and a `title` inside the div fence `:::`. The `title` will be shown in the header of the box.
+
+Below is a full example:
+
+```{R, echo = FALSE}
+cat('---
+output:
+  hugodownplus::md_document:
+    use_boxes: TRUE
+
+title: "Article title"
+# other arguments continuing here ...
+---
+
+# Heading 1
+
+Some text
+
+::: {.info-box title="Title of my info box"}\n\nHere goes some text.\n
+```{r}\n# Here is a code comment and below some code\nx <- 1 + 1\n```\n
+:::')
+```
+
+This alone will just render a "naked" expandable box using the `<details>` and `<summary>` HTML tags:
+
+<div class="info-box" title="Title of my info box">
+<div class="note" markdown="1">
+<details class="open">
+  <summary class="note-header" markdown="1">
+  Title of my info box <i class="fas fa-tools"></i>
+  </summary>
+  <div class="note-details">
+  <p>Here goes some text</p>
+```{r}
+# Here is a code comment and below some code
+1 + 1
+```
+  </div></details>
+</div>
+
+<br>
+All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the three main parts of each box (info, warn and output):
+
+```{css, eval = FALSE}
+.note, .warn, .output {
+  /* customize the whole box */
+}
+
+summary.note-header,
+summary.warn-header,
+summary.output-header {
+  /* customize the box header */
+}
+
+.note-details,
+.warn-details,
+.output-details {
+  /* customize the content of the box */
+}
+```
+
+Note that the class for info box inside the fenced (pandoc) div `:::` is called `.info-box`, but the CSS classes are called `.note`. This is because `info` is a very common class which is why the CSS selectors take `.note` as class instead.
+
+If you are running a Hugo website you can just add the CSS classes and your preferred style to your custom.css file.
+
+## Child Session Info
+
+As mentioned above, we can create an expandable box containing the current session info by using the `child_session_info()` function as inline R code in an Rmd file.
+
+Below is an example:
+
+```{R, echo = FALSE}
+cat('---
+output: hugodownplus::md_document
+
+title: "Article title"
+# other arguments continuing here ...
+---
+
+# Heading 1
+
+Some text
+
+`r child_session_info()`
+')
+```
+
+Which will render a "naked" expandable box containing the session info:
+
+<div class="session" markdown="1">
+<details class="sess">
+  <summary class="session-header" markdown="1">
+  Session Info <i class="fas fa-tools"></i>
+  </summary>
+```{r, echo = FALSE}
+library(hugodown)
+sessioninfo::session_info(pkgs = "attached")
+```
+  </details>
+</div>
+
+<br>
+
+Here too the styling has to happen via CSS. We can use the same classes as for the other boxes by just interchanging the class name `.note` for `.session`.

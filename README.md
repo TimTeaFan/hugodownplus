@@ -52,12 +52,12 @@ and implemented in `rmarkdown::md_document()`, we will focus on the one
 completely new feature of {hugodownplus}: its expandable HTML boxes.
 
 The are two ways of using expandable HTML boxes with {hugodownplus}. One
-is wrapping a child Rmd document into a fenced (pandoc) div with `:::`
-and link a child document whose content will be rendered into an info,
-warn or output box. The other way is to call `child_session_info()` as
-inline R code to generate an expandable box containing the session info.
+is wrapping text and or code (or a child Rmd document) into a fenced
+(pandoc) div with `:::`. The content will be rendered into an info, warn
+or output box. The other way is to call `child_session_info()` as inline
+R code to generate an expandable box containing the session info.
 
-Let’s elaborate on both options a little.
+Let’s elaborate on both options.
 
 #### Info, warn and output boxes
 
@@ -89,152 +89,17 @@ All we have to do is to specify either `{.info-box}`, `{.warn-box}` or
 `{.output-box}` and a `title` inside the div fence `:::`. The `title`
 will be shown in the header of the box.
 
-Below is a full example:
-
-    ---
-    output:
-      hugodownplus::md_document:
-        use_boxes: TRUE
-
-    title: "Article title"
-    # other arguments continuing here ...
-    ---
-
-    # Heading 1
-
-    Some text
-
-    ::: {.info-box title="Title of my info box"}
-
-    Here goes some text.
-
-    ```{r}
-    # Here is a code comment and below some code
-    x <- 1 + 1
-    ```
-
-    :::
-
-This alone will just render a “naked” expandable box using the
-`<details>` and `<summary>` HTML tags:
-
-<div class="info-box" title="Title of my info box">
-
-<div class="note" markdown="1">
-
-<details class="open">
-<summary class="note-header">
-Title of my info box <i class="fas fa-tools"></i>
-</summary>
-
-<div class="note-details">
-
-<p>
-Here goes some text
-</p>
-
-``` r
-# Here is a code comment and below some code
-1 + 1
-[1] 2
-```
-
-</div>
-
-</details>
-
-</div>
-
-<br> All the formatting that we may want to apply has to happen in CSS.
-The following classes can be used for the three main parts of each box
-(info, warn and output):
-
-``` css
-.note, .warn, .output {
-  /* customize the whole box */
-}
-
-summary.note-header,
-summary.warn-header,
-summary.output-header {
-  /* customize the box header */
-}
-
-.note-details,
-.warn-details,
-.output-details {
-  /* customize the content of the box */
-}
-```
-
-Note that the class for info box inside the fenced (pandoc) div `:::` is
-called `.info-box`, but the CSS classes are called `.note`. This is
-because `info` is a very common class which is why the CSS selectors
-take `.note` as class instead.
-
-If you are running a Hugo website you can just add the CSS classes and
-your prefered style to your custom.css file.
-
 #### child info session
 
 As mentioned above, we can create an expandable box containing the
-current session info by using the `child_info_session()` function as
+current session info by using the `child_session_info()` function as
 inline R code in an Rmd file.
 
-Below is an example:
+``` r
+cat("`r child_session_info()`")
+```
 
-    ---
-    output: hugodownplus::md_document
-
-    title: "Article title"
-    # other arguments continuing here ...
-    ---
-
-    # Heading 1
-
-    Some text
-
-    `r child_session_info()`
-
-Which will render a “naked” expandable box containing the session info:
-
-<div class="session" markdown="1">
-
-<details class="sess">
-<summary class="session-header">
-Session Info <i class="fas fa-tools"></i>
-</summary>
-
-    ─ Session info ───────────────────────────────────────────────────────────────
-     setting  value
-     version  R version 4.2.1 (2022-06-23)
-     os       macOS Big Sur ... 10.16
-     system   x86_64, darwin17.0
-     ui       X11
-     language (EN)
-     collate  en_US.UTF-8
-     ctype    en_US.UTF-8
-     tz       Europe/Berlin
-     date     2023-02-16
-     pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
-
-    ─ Packages ───────────────────────────────────────────────────────────────────
-     package  * version    date (UTC) lib source
-     hugodown * 0.0.0.9000 2023-02-13 [1] Github (r-lib/hugodown@f6f23dd)
-
-     [1] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
-
-    ──────────────────────────────────────────────────────────────────────────────
-
-</details>
-
-</div>
-
-<br>
-
-Here too the styling has to happen via CSS. We can use the same classes
-as for the other boxes by just interchanging the class name `.note` for
-`.session`.
+For me information on how to style the HTML boxes see the vignette .
 
 ## History & Idea
 
