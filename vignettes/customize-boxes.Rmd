@@ -55,22 +55,22 @@ Some text
 
 This alone will just render a "naked" expandable box using the `<details>` and `<summary>` HTML tags:
 
-<div class="info-box" title="Title of my info box">
-<div class="note" markdown="1">
-<details class="open">
-  <summary class="note-header" markdown="1">
-  Title of my info box <i class="fas fa-tools"></i>
-  </summary>
-  <div class="note-details">
-  <p>Here goes some text</p>
-```{r}
-# Here is a code comment and below some code
-1 + 1
-```
-  </div></details>
-</div>
+<!-- <div class="info-box" title="Title of my info box"> -->
+<!-- <div class="note" markdown="1"> -->
+<!-- <details class="open"> -->
+<!--   <summary class="note-header" markdown="1"> -->
+<!--   Title of my info box <i class="fas fa-tools"></i> -->
+<!--   </summary> -->
+<!--   <div class="note-details"> -->
+<!--   <p>Here goes some text</p> -->
+<!-- ```{r} -->
+<!-- # Here is a code comment and below some code -->
+<!-- 1 + 1 -->
+<!-- ``` -->
+<!--   </div></details> -->
+<!-- </div> -->
 
-<br>
+<!-- <br> -->
 All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the three main parts of each box (info, warn and output):
 
 ```{css, eval = FALSE}
@@ -119,18 +119,18 @@ Some text
 
 Which will render a "naked" expandable box containing the session info:
 
-<div class="session" markdown="1">
-<details class="sess">
-  <summary class="session-header" markdown="1">
-  Session Info <i class="fas fa-tools"></i>
-  </summary>
-```{r, echo = FALSE}
-library(hugodownplus)
-sessioninfo::session_info(pkgs = "attached")
-```
-  </details>
-</div>
+<!-- <div class="session" markdown="1"> -->
+<!-- <details class="sess"> -->
+<!--   <summary class="session-header" markdown="1"> -->
+<!--   Session Info <i class="fas fa-tools"></i> -->
+<!--   </summary> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- library(hugodownplus) -->
+<!-- sessioninfo::session_info(pkgs = "attached") -->
+<!-- ``` -->
+<!--   </details> -->
+<!-- </div> -->
 
-<br>
+<!-- <br> -->
 
 Here too the styling has to happen via CSS. We can use the same classes as for the other boxes by just interchanging the class name `.note` for `.session`.
