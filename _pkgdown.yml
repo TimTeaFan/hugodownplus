@@ -1,6 +1,7 @@
 title: hugodownplus
 url: https://timteafan.github.io/hugodownplus/
 template:
+  bootstrap: 5
   bootswatch: lumen
   bslib:
     primary: "#489bfa"
@@ -15,8 +16,8 @@ navbar:
       text: Reference
       href: reference/index.html
     articles:
-     icon: fas fa-book-open
-     text: Articles
+      icon: fas fa-book-open
+      text: Articles
     news:
       icon: fas fa-clipboard-list
       text: News
