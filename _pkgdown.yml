@@ -16,8 +16,11 @@ navbar:
       text: Reference
       href: reference/index.html
     articles:
-      icon: fas fa-book-open
-      text: Articles
+     icon: fas fa-book-open
+     text: Articles
+     menu:
+     - text: Customizing Expandable HTML Boxes
+       href: articles/customize-boxes.html
     news:
       icon: fas fa-clipboard-list
       text: News
