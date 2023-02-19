@@ -21,7 +21,6 @@
 #'
 #' @export
 child_session_info <- function(pkgs = c("loaded", "attached", "installed")[1]) {
-  pkgs <- pkgs
   knitr::knit_child(fs::path_package("rmdtmp/session_info.Rmd",
                                      package = "hugodownplus"),
                     envir = environment(),
