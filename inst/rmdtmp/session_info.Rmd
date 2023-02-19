@@ -1,3 +1,9 @@
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 <div class="session" markdown="1">
 <details class="sess">
   <summary class="session-header" markdown="1">
