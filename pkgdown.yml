@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   customize-boxes: customize-boxes.html
-last_built: 2023-02-19T13:03Z
+last_built: 2023-02-19T13:08Z
 urls:
   reference: https://timteafan.github.io/hugodownplus/reference
   article: https://timteafan.github.io/hugodownplus/articles
