@@ -44,7 +44,8 @@ knitr::opts_chunk$set(
 `{hugodownplus}` is not on CRAN yet. You can install the latest version from [GitHub](https://github.com/TimTeaFan/hugodownplus) with:
 
 ```{r install, eval = FALSE}
-remotes::install_github("TimTeaFan/hugodownplus")
+remotes::install_github("TimTeaFan/hugodownplus",
+                        build_vignettes = TRUE)
 ```
 
 ## How to use HTML boxes

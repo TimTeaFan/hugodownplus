@@ -42,7 +42,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 from [GitHub](https://github.com/TimTeaFan/hugodownplus) with:
 
 ``` r
-remotes::install_github("TimTeaFan/hugodownplus")
+remotes::install_github("TimTeaFan/hugodownplus",
+                        build_vignettes = TRUE)
 ```
 
 ## How to use HTML boxes
