@@ -55,22 +55,6 @@ Some text
 
 This alone will just render a "naked" expandable box using the `<details>` and `<summary>` HTML tags.
 
-<!-- <div class="info-box" title="Title of my info box"> -->
-<!-- <div class="note" markdown="1"> -->
-<!-- <details class="open"> -->
-<!--   <summary class="note-header" markdown="1"> -->
-<!--   Title of my info box <i class="fas fa-tools"></i> -->
-<!--   </summary> -->
-<!--   <div class="note-details"> -->
-<!--   <p>Here goes some text</p> -->
-<!-- ```{r} -->
-<!-- # Here is a code comment and below some code -->
-<!-- 1 + 1 -->
-<!-- ``` -->
-<!--   </div></details> -->
-<!-- </div> -->
-
-<!-- <br> -->
 All the formatting that we may want to apply has to happen in CSS. The following classes can be used for the three main parts of each box (info, warn and output):
 
 ```{css, eval = FALSE}
