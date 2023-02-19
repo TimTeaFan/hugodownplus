@@ -4,7 +4,17 @@
 \alias{child_session_info}
 \title{An Rmd child template that produces a collapsed session info box}
 \usage{
-child_session_info()
+child_session_info(pkgs = c("loaded", "attached", "installed")[1])
+}
+\arguments{
+\item{pkgs}{Which packages to show. It may be:
+\itemize{
+\item \code{NULL} or \code{"loaded"}: show all loaded packages,
+\item \code{"attached"}: show all attached packages,
+\item \code{"installed"}: show all installed packages,
+\item a character vector of package names. Their (hard) dependencies are
+also shown by default, see the \code{dependencies} argument.
+}}
 }
 \description{
 When called in an Rmd document this function generates child document containing an expandable
