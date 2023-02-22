@@ -100,7 +100,10 @@ inline R code in an Rmd file.
 
 For me information on how to style the HTML boxes see the vignette
 <a href="https://timteafan.github.io/hugodownplus/articles/customize-boxes.html">“Customize
-Expandable HMTL Boxes”</a>.
+Expandable HMTL Boxes”</a> or read the blog post introducing and
+showcasing this package on
+<a href="https://tim-tiefenbach.de/post/2023-introducing-hugodownplus/">my
+blog</a>.
 
 ## History & Idea
 

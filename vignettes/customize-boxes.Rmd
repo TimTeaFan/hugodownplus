@@ -102,3 +102,5 @@ Some text
 ```
 
 Here too the styling has to happen via CSS. We can use the same classes as for the other boxes by just interchanging the class name `.note` for `.session`.
+
+Beside this vignette, you can also read my post introducing and showcasing {hugodownplus} on <a href="https://tim-tiefenbach.de/post/2023-introducing-hugodownplus/">my blog</a>.
